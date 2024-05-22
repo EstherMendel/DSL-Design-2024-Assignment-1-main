@@ -62,4 +62,5 @@ void main()
 {
 	hello();
 	println(checkBoulderRouteConfiguration());
+	println(":(");
 }
