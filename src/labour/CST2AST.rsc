@@ -31,6 +31,8 @@ hold[Hold]: Hold
     => hold(x, y, shape, rotation, color, startingLabels, endLabel != null);
 
 //the function that actually invokes all stuff above
-BoulderingRoute cst2ast(str input) {
+//maybe decleration should be 'Tree' instead
+public Tree cst2ast(str input) 
+{
     return parse(#start[BoulderingRoute], input);
 }
