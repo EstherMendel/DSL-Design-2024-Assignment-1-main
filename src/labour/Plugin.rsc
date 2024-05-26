@@ -14,9 +14,14 @@ import IO;
 */
 bool checkWellformedness(loc fil) {
 	// Parsing
+	println("now parsing to CST");
 	&T resource = parserLaBouR(fil);
+	//print out the result
+	println(toString(resource));
 	// Transform the parse tree into an abstract syntax tree
+	println("now transforming to AST");
 	&T ast = cst2ast(resource);
+	println(toString(ast));
 	// Check the well-formedness of the program
 	return checkBoulderRouteConfiguration(ast);
 }
@@ -32,3 +37,6 @@ void main() {
   	});
   	println("fuck this assignment");
 }
+
+//THIS COMMAND IN THE TERMINAL:
+//checkWellformedness(|project://LaBouR/example.labour|);

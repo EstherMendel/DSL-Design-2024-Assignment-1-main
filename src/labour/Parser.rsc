@@ -10,6 +10,5 @@ import IO;
  */
  
 public Tree parserLaBouR(loc l) {
-	println("??");
     return parse(#BoulderingRoute, l);
 }
