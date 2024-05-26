@@ -2,6 +2,7 @@ module labour::Parser
 
 import ParseTree;
 import labour::Syntax;
+import IO;
 
 /*
  * Define the parser for the LaBouR language. The name of the function must be parserLaBouR.
@@ -9,5 +10,6 @@ import labour::Syntax;
  */
  
 public Tree parserLaBouR(loc l) {
+	println("??");
     return parse(#BoulderingRoute, l);
 }

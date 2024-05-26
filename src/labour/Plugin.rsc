@@ -5,6 +5,7 @@ import util::IDE;
 import labour::Check;
 import labour::Parser;
 import labour::CST2AST;
+import IO;
 
 /*
 * This function is defined to test the functionality of the whole assignment. It receives a file path as a parameter and returns true if the program satisfies the specification or false otherwise.
@@ -29,4 +30,5 @@ void main() {
 	registerLanguage("LaBouR - DSLD", "labour", Tree(str _, loc path) {
 		return parserLaBouR(path);
   	});
+  	println("fuck this assignment");
 }
