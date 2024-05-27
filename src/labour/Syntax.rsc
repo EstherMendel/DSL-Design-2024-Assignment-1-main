@@ -21,3 +21,6 @@ syntax GridBasePoint = "grid_base_point" "{" "x:" Integer "," "y:" Integer "}";
 syntax Identifier = "identifier" Id;
 
 syntax Hold  = "hold" "{" "x:" Integer "," "y:" Integer "," "shape:" Id "," "rotation:" Integer "," "color:" Color ("," "starting_labels:" Integer)? ("," "end_label")? "}";
+
+//TODO: Is ambiguous apparently
+//TODO: we should not assume order in the statements, as seen in the teams chat
