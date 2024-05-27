@@ -14,6 +14,11 @@ import labour::CST2AST;
 bool checkWellformedness(loc fil) {
 	// Parsing
 	&T resource = parserLaBouR(fil);
+<<<<<<< Updated upstream
+=======
+	//print out the result
+	println(resource);
+>>>>>>> Stashed changes
 	// Transform the parse tree into an abstract syntax tree
 	&T ast = cst2ast(resource);
 	// Check the well-formedness of the program
