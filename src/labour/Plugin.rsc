@@ -17,7 +17,7 @@ bool checkWellformedness(loc fil) {
 	println("now parsing to CST");
 	&T resource = parserLaBouR(fil);
 	//print out the result
-	println(toString(resource));
+	println(resource);
 	// Transform the parse tree into an abstract syntax tree
 	println("now transforming to AST");
 	&T ast = cst2ast(resource);
