@@ -15,6 +15,14 @@ import ParseTree;
 
 // Function to transform boulderingroute to 
 ABoulderingRoute cst2ast(start[BoulderingRoute] sr) {
+		appl(_, children) = sr;
+		// parse trees vd properties
+		for (Tree child <- children)
+		{
+			//ignore layout
+			
+			//switch case over the full ting
+		}
 		BoulderingRoute r = sr.top;
 		ABoulderingRoute result = boulderingRoute(toList(r.properties));
 		return result;
