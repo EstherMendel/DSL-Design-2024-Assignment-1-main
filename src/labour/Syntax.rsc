@@ -13,7 +13,7 @@ layout Layout = [\ \t\n\r]*;
 
 
 //this hack is done to circumvent comma problems
-start syntax BoulderingRoute = "bouldering_route" "{" Route_property* "}";
+start syntax BoulderingRoute = "bouldering_route" "{" {Route_property "," }+ properties "}";
 
 syntax Route_property = Grade
 						| GridBasePoint 
@@ -28,9 +28,7 @@ syntax Identifier = "identifier" Id;
 
 syntax Holdlist = Hold*;
 
-//syntax Hold  = "hold" "{" "x:" Integer "," "y:" Integer "," "shape:" Str "," "rotation:" Integer "," "color:" Color ("," "starting_labels:" Integer)? ("," "end_label")? "}";
-
-syntax Hold  = "hold" "{" (HoldExpr ",")* HoldExpr "}";
+syntax Hold  = "hold" "{" {HoldExpr ","}+  "}";
 
 syntax HoldExpr = "x:" Integer
 				| "y:" Integer
