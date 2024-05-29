@@ -9,6 +9,6 @@ import IO;
  * This function receives as a parameter the path of the file to parse represented as a loc, and returns a parse tree that represents the parsed program.
  */
  
-public Tree parserLaBouR(loc l) {
-    return parse(#BoulderingRoute, l);
+public start[BoulderingRoute] parserLaBouR(loc l) {
+    return parse(#start[BoulderingRoute], l);
 }
