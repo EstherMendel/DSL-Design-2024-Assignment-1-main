@@ -5,28 +5,28 @@ module labour::AST
  *
  * - make sure there is an almost one-to-one correspondence with the grammar in Syntax.rsc
  */
+ 
 
-data BoulderingRoute = boulderingRoute(list[Route_property] properties);
+data ABoulderingRoute = boulderingRoute(list[ARoute_property] aproperties);
 
-data Route_property 
-  = grade(str s)
-  | gridBasePoint(GridBasePoint point)
-  | identifier(str id)
-  | holdlist(list[Hold] holds);
+data ARoute_property = grade(str s)
+  | gridBasePoint(AGridBasePoint point)
+  | identifier(AId id)
+  | holdlist(list[AHold] holds);
 
-data GridBasePoint = gridBasePoint(int x, int y);
+data AGridBasePoint = gridBasePoint(int x, int y);
 
-data Hold = hold(list[HoldExpr] expressions);
+data AHold = hold(list[AHoldExpr] expressions);
 
-data HoldExpr = x(int i)
+data AHoldExpr = x(int i)
   			| y(int i)
-  			| shape(str s)
+  			| shape(AId s)
  			| rotation(int i)
- 			| color(Color c)
+ 			| color(AColor c)
   			| startingLabels(int i)
   			| endLabel();
   
-data Color = white() 
+data AColor = white() 
            | yellow() 
            | green() 
            | blue() 
@@ -36,6 +36,4 @@ data Color = white()
            | black() 
            | orange();
            
-data Str = Str(str s);
-data Id = id(str s);
-data Integer = integer(int i);
+data AId = id(str s);

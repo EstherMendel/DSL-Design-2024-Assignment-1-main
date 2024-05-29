@@ -13,7 +13,7 @@ layout Layout = [\ \t\n\r]*;
 
 
 //this hack is done to circumvent comma problems
-syntax BoulderingRoute = "bouldering_route" "{" (Route_property ",")* Route_property "}";
+start syntax BoulderingRoute = "bouldering_route" "{" Route_property* "}";
 
 syntax Route_property = Grade
 						| GridBasePoint 

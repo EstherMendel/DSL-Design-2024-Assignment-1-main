@@ -21,7 +21,7 @@ void hello()
  * Create a function called checkBoulderRouteConfiguration(...), which is responsible for calling all the required functions that check the program's well-formedness as described in the PDF (Section 2.2.) 
  * This function takes as a parameter the program's AST and returns true if the program is well-formed or false otherwise.
  */
- bool checkBoulderRouteConfiguration()
+ bool checkBoulderRouteConfiguration(thing)
  {
  	return true;
  }

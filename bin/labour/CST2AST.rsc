@@ -14,7 +14,14 @@ import labour::Syntax;
 import ParseTree;
 
 // Function to transform boulderingroute to 
-AST cst2ast(ParseTree tree) {
-    return visit(tree){
-    	
-    };
+ABoulderingRoute cst2ast(start[BoulderingRoute] sr) {
+		BoulderingRoute r = sr.top;
+		ABoulderingRoute result = boulderingRoute(toList(r.properties));
+		return result;
+    }
+    
+list[ARoute_property] toList(Route_property* properties) {
+    return [grade("1a")];
+}
+
+
