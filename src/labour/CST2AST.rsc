@@ -2,6 +2,7 @@ module labour::CST2AST
 
 import labour::AST;
 import labour::Syntax;
+import IO;
 
 
 /*
@@ -14,7 +15,8 @@ import labour::Syntax;
 import ParseTree;
 
 // Function to transform boulderingroute to 
-ABoulderingRoute cst2ast(start[BoulderingRoute] sr) {
+//ABoulderingRoute cst2ast(start[BoulderingRoute] sr) {
+ABoulderingRoute cst2ast(Tree sr) {
 		appl(_, children) = sr;
 		// parse trees vd properties
 		for (Tree child <- children)
@@ -22,14 +24,16 @@ ABoulderingRoute cst2ast(start[BoulderingRoute] sr) {
 			//ignore layout
 			
 			//switch case over the full ting
+			println(child);
 		}
-		BoulderingRoute r = sr.top;
-		ABoulderingRoute result = boulderingRoute(toList(r.properties));
-		return result;
+		//BoulderingRoute r = sr.top;
+		//ABoulderingRoute result = boulderingRoute(toList(r.properties));
+		//return result;
+		return 0;
     }
     
-list[ARoute_property] toList(Route_property* properties) {
-    return [grade("1a")];
-}
+//list[ARoute_property] toList(Route_property* properties) {
+//    return [grade("1a")];
+//}
 
 
