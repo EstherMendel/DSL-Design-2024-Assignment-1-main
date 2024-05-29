@@ -10,3 +10,11 @@ import labour::Syntax;
  * Map regular CST arguments (e.g., *, +, ?) to lists
  * Map lexical nodes to Rascal primitive types (bool, int, str)
  */
+
+import ParseTree;
+
+// Function to transform boulderingroute to 
+AST cst2ast(ParseTree tree) {
+    return visit(tree){
+    	
+    };

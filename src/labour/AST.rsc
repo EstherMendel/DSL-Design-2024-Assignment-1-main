@@ -5,16 +5,37 @@ module labour::AST
  *
  * - make sure there is an almost one-to-one correspondence with the grammar in Syntax.rsc
  */
- 
-data BoulderingRoute = route(Grade grade, GridBasePoint gridBasePoint, Identifier identifier, list[Hold] holds);
 
-data Grade = grade(str value);
+data BoulderingRoute = boulderingRoute(list[Route_property] properties);
+
+data Route_property 
+  = grade(str s)
+  | gridBasePoint(GridBasePoint point)
+  | identifier(str id)
+  | holdlist(list[Hold] holds);
 
 data GridBasePoint = gridBasePoint(int x, int y);
 
-data Identifier = identifier(str id);
+data Hold = hold(list[HoldExpr] expressions);
 
-//startingLabels syntax is a bit unclear. it states:
-//"Of these holds, one or two may be labeled with one or two label strips to indicate they serve as hand start holds for one or both hands"
-//so I guess use an int as it can be either 0, 1 or 2?
-data Hold = hold(int x, int y, str shape, int rotation, str color, int startingLabels, bool endLabel);
+data HoldExpr = x(int i)
+  			| y(int i)
+  			| shape(str s)
+ 			| rotation(int i)
+ 			| color(Color c)
+  			| startingLabels(int i)
+  			| endLabel();
+  
+data Color = white() 
+           | yellow() 
+           | green() 
+           | blue() 
+           | red() 
+           | purple() 
+           | pink() 
+           | black() 
+           | orange();
+           
+data Str = Str(str s);
+data Id = id(str s);
+data Integer = integer(int i);

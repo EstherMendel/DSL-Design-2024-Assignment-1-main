@@ -36,6 +36,7 @@ void main() {
 		return parserLaBouR(path);
   	});
   	println("fuck this assignment");
+  	checkWellformedness(|project://LaBouR/example.labour|);
 }
 
 //THIS COMMAND IN THE TERMINAL:

@@ -5,6 +5,7 @@ import util::IDE;
 import labour::Check;
 import labour::Parser;
 import labour::CST2AST;
+import IO;
 
 /*
 * This function is defined to test the functionality of the whole assignment. It receives a file path as a parameter and returns true if the program satisfies the specification or false otherwise.
@@ -13,9 +14,14 @@ import labour::CST2AST;
 */
 bool checkWellformedness(loc fil) {
 	// Parsing
+	println("now parsing to CST");
 	&T resource = parserLaBouR(fil);
+	//print out the result
+	println(resource);
 	// Transform the parse tree into an abstract syntax tree
+	println("now transforming to AST");
 	&T ast = cst2ast(resource);
+	println(toString(ast));
 	// Check the well-formedness of the program
 	return checkBoulderRouteConfiguration(ast);
 }
@@ -29,4 +35,9 @@ void main() {
 	registerLanguage("LaBouR - DSLD", "labour", Tree(str _, loc path) {
 		return parserLaBouR(path);
   	});
+  	println("fuck this assignment");
+  	checkWellformedness(|project://LaBouR/example.labour|);
 }
+
+//THIS COMMAND IN THE TERMINAL:
+//checkWellformedness(|project://LaBouR/example.labour|);

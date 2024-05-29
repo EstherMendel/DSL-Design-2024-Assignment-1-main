@@ -34,7 +34,7 @@ syntax Hold  = "hold" "{" (HoldExpr ",")* HoldExpr "}";
 
 syntax HoldExpr = "x:" Integer
 				| "y:" Integer
-				| "shape:" Str
+				| "shape:" Id
 				| "rotation:" Integer
 				| "color:" Color
 				| "starting_labels:" Integer
