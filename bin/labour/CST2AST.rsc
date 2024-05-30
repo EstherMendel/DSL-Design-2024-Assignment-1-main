@@ -76,10 +76,23 @@ ARoute_property toARouteProperty(Route_property prop) {
     }
 }
 
+//this is the LIST of holds
 list[AHold] toList(Hold* holds) {
 	list[AHold] result = [];
+	println("Holdlist unfolding");
     for (Hold hold <- holds) {
-        result += toAHold(hold);
+        result += toList(hold.holdexpressions);
+    }
+    return result;
+    //return [cst2ast(q) | (Question q <- questions)];
+}
+
+//this is ONE hold
+list[AHoldExpr] toList({HoldExpr "," }+ holdexprs) {
+	list[AHoldExpr] result = [];
+	println("Holdexpr unfolding");
+    for (HoldExpr holdexpr <- holdexprs) {
+        result += toAHoldExpr(holdexpr);
     }
     return result;
     //return [cst2ast(q) | (Question q <- questions)];
@@ -87,48 +100,48 @@ list[AHold] toList(Hold* holds) {
 
 
 // Function to transform individual Route_property
-AHold toAHold(Hold hold) {
-	println("Processing Hold: <hold>");
-	println("Type of hold: <typeOf(hold)>");
+AHoldExpr toAHoldExpr(HoldExpr hold) {
+	println("Processing HoldExpr: <hold>");
+	println("Type of Expr: <typeOf(hold)>");
 	//println("Concrete type: <prop.concreteType()>");
     switch (hold) {
         //okay this works, but I am 100% sure I did this before
-        case (Hold)`x: <Integer x>`: 
+        case (HoldExpr)`x: <Integer i>`: 
         {
         	println("matched an x!");
-        	return x(toInt("<x>"));
+        	return x(toInt("<i>"));
         }
-        case (Hold)`y: <Integer y>`: 
+        case (HoldExpr)`y: <Integer i>`: 
         {
         	println("matched an y!");
-        	return y(toInt("<y>"));
+        	return y(toInt("<i>"));
         }
-        case (Route_property)`shape <Id s>`:
+        case (HoldExpr)`shape: <Id s>`:
         {
         	println("matched with shape!!");
         	return shape(id("<s>"));
         }
-        case (Route_property)`rotation <Integer r>`:
+        case (HoldExpr)`rotation: <Integer r>`:
         {
         	println("matched with rotation!");
         	return rotation(toInt("<r>"));
         }
-        case (Route_property)`color <Color c>`:
+        case (HoldExpr)`color: <Color c>`:
         {
         	println("matched with color!");
         	return color(color("<c>"));
         }
-        case (Route_property)`startingLabels <Integer sl>`:
+        case (HoldExpr)`startingLabels: <Integer sl>`:
         {
         	println("matched with startingLabel!");
         	return startingLabels(toInt("<sl>"));
         }
-        case (Route_property)`endLabel`:
+        case (HoldExpr)`endLabel`:
         {
         	println("matched with endLabel!");
         	return endLabel();
         }
  		default:
- 			throw "Unexpected Route_property: <prop>";
+ 			throw "Unexpected Route_property: <hold>";
     }
 }

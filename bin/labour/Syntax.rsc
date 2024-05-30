@@ -29,7 +29,7 @@ syntax Identifier = "identifier" Id;
 
 syntax Holdlist = Hold*;
 
-syntax Hold  = "hold" "{" {HoldExpr ","}+  "}";
+syntax Hold  = "hold" "{" {HoldExpr ","}+ holdexpressions "}";
 
 syntax HoldExpr = "x:" Integer
 				| "y:" Integer
