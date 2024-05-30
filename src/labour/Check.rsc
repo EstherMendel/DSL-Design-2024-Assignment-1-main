@@ -33,6 +33,7 @@ void hello()
  	bool hasGrade = false;
  	//we do not check wether there is only 1 gbp
  	bool hasGridBasePoint = false;
+ 	bool hasIdentifier = false;
  	//combined one for x and y
  	bool gridBasePointIsValid = false;
  	bool noMoreThanTwoStartLabelStripsPerHold = true;
@@ -51,14 +52,17 @@ void hello()
  		case grade(str s):
         {
         	println(s);
+        	hasGrade = true;
         }
         case gridBasePoint(AGridBasePoint point):
         {
         	println(point.x);
+        	hasGridBasePoint = true;
         }
         case identifier(AId id):
         {
         	println(id);
+        	hasIdentifier = true;
         }
         case holdlist(list[AHold] holds):
         {
@@ -70,7 +74,7 @@ void hello()
  		}
  	}
  	//a lot of the bools are missing because as said earlier the function exits early if these become false
- 	return atLeastTwoHolds && hasGrade && hasGridBasePoint && hasGrade && hasGridBasePoint && gridBasePointIsValid && hasEndHold;
+ 	return atLeastTwoHolds && hasGrade && hasGridBasePoint && hasGrade && hasGridBasePoint && hasIdentifier && gridBasePointIsValid && hasEndHold;
  }
 
 bool checkHoldPropertiesConfiguration(list[AHold] holds)
