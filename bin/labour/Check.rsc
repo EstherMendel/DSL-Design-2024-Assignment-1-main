@@ -93,6 +93,17 @@ void hello()
  	}
  	//a lot of the bools are missing because as said earlier the function exits early if these become false
  	return atLeastTwoHolds && betweenZeroAndTwoStartHolds && hasGrade && hasGridBasePoint && hasGrade && hasGridBasePoint && hasIdentifier && gridBasePointIsValid && noMoreThanTwoStartLabelStripsPerHold && maxTwoStartLabelStrips && hasEndHold && hasSameColor && allHoldsAreValid&& colorsAreValid && holdRotationBetween0And359;
+ 	if (!isEmpty(colors)) {
+	 	AColor firstColor = colors[0];
+	    for (AColor color <- colors) {
+	        if (color != firstColor) {
+	            hasSameColor=false;
+	            break;
+	        }
+	    }
+    }
+ 	println("end");
+ 	return true;
  }
 
 //checks the holdlist
@@ -138,11 +149,14 @@ bool checkHoldPropertyConfiguration(AHold thing)
         }
         case rotation(int r):
         {
-        	println(r);
+        	println(r>0);
+        	if (r < 0 || r > 359) {
+            	hasValidRotation = false;
+        	};
         }
         case color(AColor c):
         {
-        	println(c);
+        	colors += [c];
         }
         case startingLabels(int i):
         {
@@ -151,7 +165,7 @@ bool checkHoldPropertyConfiguration(AHold thing)
         }
         case endLabel():
         {
-        	println("heee");
+        	hasEndHold = true;
         }        
  		default:
  			throw "Unexpected Expressions: <expr>";
