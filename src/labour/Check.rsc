@@ -26,6 +26,7 @@ void hello()
  
  int holdCounter = 0;
  int startHoldCounter = 0;
+ int startLabelCounter = 0;
  
  //beware of a massive block of booleans
  bool atLeastTwoHolds = false;
@@ -113,6 +114,7 @@ bool checkHoldPropertiesConfiguration(list[AHold] holds)
  {
  	holdCounter = 0;
  	startHoldCounter = 0;
+ 	startLabelCounter = 0;
  	for (hold <- holds) {
  		holdCounter = holdCounter + 1;
  		checkHoldPropertyConfiguration(hold);
@@ -123,9 +125,19 @@ bool checkHoldPropertiesConfiguration(list[AHold] holds)
  	{
  		atLeastTwoHolds = true;
  	}
+ 	else
+ 	{
+ 		println("<2 holds in route");
+ 	}
  	if(!(0<= startHoldCounter && startHoldCounter <= 2))
  	{
  		betweenZeroAndTwoStartHolds = false;
+ 		println("<0 or >2 start holds in route");
+ 	}
+ 	if(startLabelCounter > 2)
+ 	{
+ 		println("more than 2 start labels in route!");
+ 		noMoreThanTwoStartLabelStripsPerHold = false;
  	}
  	println(holdCounter);
  	println(startHoldCounter);
@@ -163,7 +175,8 @@ bool checkHoldPropertyConfiguration(AHold thing)
         case startingLabels(int i):
         {
         	println(i);
-        	startHoldCounter = startHoldCounter += 1;
+        	startHoldCounter = startHoldCounter + 1;
+        	startLabelCounter = startLabelCounter + i;
         }
         case endLabel():
         {
