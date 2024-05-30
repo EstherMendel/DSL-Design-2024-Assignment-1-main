@@ -23,21 +23,64 @@ void hello()
  * Create a function called checkBoulderRouteConfiguration(...), which is responsible for calling all the required functions that check the program's well-formedness as described in the PDF (Section 2.2.) 
  * This function takes as a parameter the program's AST and returns true if the program is well-formed or false otherwise.
  */
+ 
+ int holdCounter = 0;
+ int startHoldCounter = 0;
+ 
+ //beware of a massive block of booleans
+ bool atLeastTwoHolds = false;
+ bool betweenZeroAndTwoStartHolds = true;
+ bool hasGrade = false;
+ //we do not check wether there is only 1 gbp
+ bool hasGridBasePoint = false;
+ bool hasIdentifier = false;
+ //combined one for x and y
+ bool gridBasePointIsValid = false;
+ bool noMoreThanTwoStartLabelStripsPerHold = true;
+ bool maxTwoStartLabelStrips = true;
+ bool hasEndHold = false;
+ bool hasSameColor = true;
+ //combined one for x,y, etc.
+ bool allHoldsAreValid = true;
+ //this one CAN'T be false as it is enforced in the CST2AST
+ bool colorsAreValid = true;
+ bool holdRotationBetween0And359 = true;
+ 
  bool checkBoulderRouteConfiguration(ABoulderingRoute thing)
  {
+ 	//if any of the bools that are true become false, you can instantly return false and print out why
+ 	//at the end we check the conjunction of the remaining ones 
+ 	atLeastTwoHolds = false;
+ 	betweenZeroAndTwoStartHolds = true;
+ 	hasGrade = false;
+ 	hasGridBasePoint = false;
+ 	hasIdentifier = false;
+ 	gridBasePointIsValid = false;
+ 	noMoreThanTwoStartLabelStripsPerHold = true;
+ 	maxTwoStartLabelStrips = true;
+ 	hasEndHold = false;
+ 	hasSameColor = true;
+ 	allHoldsAreValid = true;
+ 	colorsAreValid = true;
+ 	holdRotationBetween0And359 = true;
+ 	
+ 	
  	for (prop <- thing.aproperties) {
  		switch(prop) {
  		case grade(str s):
         {
         	println(s);
+        	hasGrade = true;
         }
         case gridBasePoint(AGridBasePoint point):
         {
         	println(point.x);
+        	hasGridBasePoint = true;
         }
         case identifier(AId id):
         {
         	println(id);
+        	hasIdentifier = true;
         }
         case holdlist(list[AHold] holds):
         {
@@ -48,17 +91,35 @@ void hello()
  			throw "Unexpected Route_property: <prop>";
  		}
  	}
- 	return true;
+ 	//a lot of the bools are missing because as said earlier the function exits early if these become false
+ 	return atLeastTwoHolds && betweenZeroAndTwoStartHolds && hasGrade && hasGridBasePoint && hasGrade && hasGridBasePoint && hasIdentifier && gridBasePointIsValid && noMoreThanTwoStartLabelStripsPerHold && maxTwoStartLabelStrips && hasEndHold && hasSameColor && allHoldsAreValid&& colorsAreValid && holdRotationBetween0And359;
  }
 
+//checks the holdlist
 bool checkHoldPropertiesConfiguration(list[AHold] holds)
  {
+ 	holdCounter = 0;
+ 	startHoldCounter = 0;
  	for (hold <- holds) {
+ 		holdCounter = holdCounter + 1;
  		checkHoldPropertyConfiguration(hold);
  	}
+ 	
+ 	//conclusions on the booleans
+ 	if(holdCounter >= 2)
+ 	{
+ 		atLeastTwoHolds = true;
+ 	}
+ 	if(!(0<= startHoldCounter && startHoldCounter <= 2))
+ 	{
+ 		betweenZeroAndTwoStartHolds = false;
+ 	}
+ 	println(holdCounter);
+ 	println(startHoldCounter);
  	return true;
  }
  
+//checks an individualhold
 bool checkHoldPropertyConfiguration(AHold thing)
  {
  	for (expr <- thing.expressions) {
@@ -86,6 +147,7 @@ bool checkHoldPropertyConfiguration(AHold thing)
         case startingLabels(int i):
         {
         	println(i);
+        	startHoldCounter = startHoldCounter += 1;
         }
         case endLabel():
         {

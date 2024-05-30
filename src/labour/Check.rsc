@@ -110,7 +110,7 @@ bool checkHoldPropertiesConfiguration(list[AHold] holds)
  	{
  		atLeastTwoHolds = true;
  	}
- 	if(!(0<= startHoldCounter <= 2))
+ 	if(!(0<= startHoldCounter && startHoldCounter <= 2))
  	{
  		betweenZeroAndTwoStartHolds = false;
  	}
