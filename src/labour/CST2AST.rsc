@@ -88,13 +88,13 @@ list[AHold] toList(Hold* holds) {
 }
 
 //this is ONE hold
-list[AHoldExpr] toList({HoldExpr "," }+ holdexprs) {
+AHold toList({HoldExpr "," }+ holdexprs) {
 	list[AHoldExpr] result = [];
 	println("Holdexpr unfolding");
     for (HoldExpr holdexpr <- holdexprs) {
         result += toAHoldExpr(holdexpr);
     }
-    return result;
+    return hold(result);
     //return [cst2ast(q) | (Question q <- questions)];
 }
 
@@ -129,14 +129,15 @@ AHoldExpr toAHoldExpr(HoldExpr hold) {
         case (HoldExpr)`color: <Color c>`:
         {
         	println("matched with color!");
-        	return color(color("<c>"));
+        	str col = "<c>";
+        	return color(strToColor(col));
         }
-        case (HoldExpr)`startingLabels: <Integer sl>`:
+        case (HoldExpr)`starting_labels: <Integer sl>`:
         {
         	println("matched with startingLabel!");
         	return startingLabels(toInt("<sl>"));
         }
-        case (HoldExpr)`endLabel`:
+        case (HoldExpr)`end_label`:
         {
         	println("matched with endLabel!");
         	return endLabel();
@@ -144,4 +145,10 @@ AHoldExpr toAHoldExpr(HoldExpr hold) {
  		default:
  			throw "Unexpected Route_property: <hold>";
     }
+}
+
+AColor strToColor(str c)
+{
+	println("Processing Color: <c>");
+	return white();
 }
