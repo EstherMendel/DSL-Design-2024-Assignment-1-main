@@ -14,12 +14,13 @@ import IO;
 */
 bool checkWellformedness(loc fil) {
 	// Parsing
-	println("now parsing to CST");
+	println("processing file: <fil>");
+	//println("now parsing to CST");
 	&T resource = parserLaBouR(fil);
 	//print out the result
 	//println(resource);
 	// Transform the parse tree into an abstract syntax tree
-	println("now transforming to AST");
+	//println("now transforming to AST");
 	&T ast = cst2ast(resource);
 	//println(ast);
 	// Check the well-formedness of the program
@@ -39,6 +40,14 @@ void main() {
   	println(checkWellformedness(|project://LaBouR//testfiles/example.labour|));
   	println("Check for non-uniform colors:");
   	println(checkWellformedness(|project://LaBouR//testfiles/nonuniform_colors.labour|));
+  	println("Check for only 1 hold:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/only_one_hold.labour|));
+  	println("Check for more than 2 start holds:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/more_than_two_start_holds.labour|));
+  	println("Check for no Grid Base Point:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/no_gbp.labour|));
+  	println("Check for no Only a GBP:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/only_a_gbp.labour|));
 }
 
 //THIS COMMAND IN THE TERMINAL:

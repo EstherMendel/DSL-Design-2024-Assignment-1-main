@@ -1,0 +1,6 @@
+bouldering_route {
+	grid_base_point {
+		x: 17365,
+		y: 222222
+	}
+}

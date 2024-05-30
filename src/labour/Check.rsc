@@ -67,6 +67,9 @@ void hello()
  	colorsAreValid = true;
  	holdRotationBetween0And359 = true;
  	
+ 	holdCounter = 0;
+ 	startHoldCounter = 0;
+ 	startLabelCounter = 0;
  	
  	for (prop <- thing.aproperties) {
  		switch(prop) {
@@ -93,6 +96,9 @@ void hello()
  	}
     
     //conclusions on the booleans
+    print("RESULTING ROUTE:");
+    println(thing);
+    
  	if(holdCounter >= 2)
  	{
  		atLeastTwoHolds = true;
@@ -100,9 +106,7 @@ void hello()
  	else
  	{
 		atLeastTwoHolds = false;
-		print("Your route");
-		print(thing);
- 		println("has \<2 holds");
+ 		println("Your route has \<2 holds");
  	}
  	
  	if (!isEmpty(colors)) {
@@ -110,9 +114,7 @@ void hello()
 	    for (AColor color <- colors) {
 	        if (color != firstColor) {
 	            hasSameColor=false;
-		 		print("Your route");
-				print(thing);
-		 		println("does not have all same colors:");            
+		 		println("Your route does not have all same colors:");            
 	            break;
 	        }
 	    }
@@ -121,41 +123,29 @@ void hello()
  	if (!(0<= startHoldCounter && startHoldCounter <= 2))
  	{
  		betweenZeroAndTwoStartHolds = false;
- 		print("Your route");
-		print(thing);
- 		println("has \<0 or \>2 start holds");
+ 		println("Your route has \<0 or \>2 start holds");
  	}
  	
  	if(startLabelCounter > 2)
  	{
- 		print("Your route");
-		print(thing);
- 		println("has \>2 start labels");
+ 		println("Your route has \>2 start labels");
  		noMoreThanTwoStartLabelStripsPerHold = false;
  	}
  	
  	if(!hasEndHold) {
- 		print("Your route");
-		print(thing);
- 		println("has no end hold");
+ 		println("Your route has no end hold");
  	}
  	
  	if(!hasIdentifier) {
- 		print("Your route");
-		print(thing);
- 		println("has no identifier");
+ 		println("Your route has no identifier");
  	}
  	
  	if(!hasGridBasePoint) {
- 		print("Your route");
-		print(thing);
- 		println("has no grid base point");
+ 		println("Your route has no grid base point");
  	}
  	
  	if(!hasGrade) {
- 		print("Your route");
-		print(thing);
- 		println("has no grade");
+ 		println("Your route has no grade");
  	}
     
  	//a lot of the bools are missing because as said earlier the function exits early if these become false
@@ -171,9 +161,6 @@ void hello()
 //checks the holdlist
 bool checkHoldPropertiesConfiguration(list[AHold] holds)
  {
- 	holdCounter = 0;
- 	startHoldCounter = 0;
- 	startLabelCounter = 0;
  	for (hold <- holds) {
  		hasX = false;
 		hasY = false;
