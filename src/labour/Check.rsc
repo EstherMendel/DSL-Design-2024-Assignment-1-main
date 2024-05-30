@@ -54,10 +54,49 @@ void hello()
 bool checkHoldPropertiesConfiguration(list[AHold] holds)
  {
  	for (hold <- holds) {
- 		println(hold);
+ 		checkHoldPropertyConfiguration(hold);
  	}
  	return true;
  }
+ 
+bool checkHoldPropertyConfiguration(AHold thing)
+ {
+ 	for (expr <- thing.expressions) {
+ 		switch(expr) {
+ 		case x(int i):
+        {
+        	println(i);
+        }
+        case y(int i):
+        {
+        	println(i);
+        }
+        case shape(AId s):
+        {
+        	println(s);
+        }
+        case rotation(int r):
+        {
+        	println(r);
+        }
+        case color(AColor c):
+        {
+        	println(c);
+        }
+        case startingLabels(int i):
+        {
+        	println(i);
+        }
+        case endLabel():
+        {
+        	println("heee");
+        }        
+ 		default:
+ 			throw "Unexpected Expressions: <expr>";
+ 		}
+ 	}
+ 	return true;
+}
 //
 //bool checkHoldPropertyConfiguration(AHoldExpr thing)
 // {
