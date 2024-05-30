@@ -88,13 +88,13 @@ list[AHold] toList(Hold* holds) {
 }
 
 //this is ONE hold
-list[AHoldExpr] toList({HoldExpr "," }+ holdexprs) {
+AHold toList({HoldExpr "," }+ holdexprs) {
 	list[AHoldExpr] result = [];
 	println("Holdexpr unfolding");
     for (HoldExpr holdexpr <- holdexprs) {
         result += toAHoldExpr(holdexpr);
     }
-    return result;
+    return hold(result);
     //return [cst2ast(q) | (Question q <- questions)];
 }
 
@@ -129,14 +129,15 @@ AHoldExpr toAHoldExpr(HoldExpr hold) {
         case (HoldExpr)`color: <Color c>`:
         {
         	println("matched with color!");
-        	return color(color("<c>"));
+        	str col = "<c>";
+        	return color(strToColor(col));
         }
-        case (HoldExpr)`startingLabels: <Integer sl>`:
+        case (HoldExpr)`starting_labels: <Integer sl>`:
         {
         	println("matched with startingLabel!");
         	return startingLabels(toInt("<sl>"));
         }
-        case (HoldExpr)`endLabel`:
+        case (HoldExpr)`end_label`:
         {
         	println("matched with endLabel!");
         	return endLabel();
@@ -144,4 +145,23 @@ AHoldExpr toAHoldExpr(HoldExpr hold) {
  		default:
  			throw "Unexpected Route_property: <hold>";
     }
+}
+
+//yes, this is just a big switch statement with string matching
+AColor strToColor(str c)
+{
+	println("Processing Color: <c>");
+	switch(c)
+	{
+		case "white": return white();
+		case "yellow": return yellow();
+		case "green": return green();
+		case "blue": return blue();
+		case "red": return red();
+		case "purple": return purple();
+		case "pink": return pink();
+		case "black": return black();
+		case "orange": return orange();
+		default: throw "Unexpected Color: <c>";
+	}
 }

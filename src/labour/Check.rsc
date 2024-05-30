@@ -2,8 +2,10 @@ module labour::Check
 
 import labour::AST;
 
+import ParseTree;
 import IO;
 import List;
+import Message;
 
 void hello()
 {
@@ -21,10 +23,49 @@ void hello()
  * Create a function called checkBoulderRouteConfiguration(...), which is responsible for calling all the required functions that check the program's well-formedness as described in the PDF (Section 2.2.) 
  * This function takes as a parameter the program's AST and returns true if the program is well-formed or false otherwise.
  */
- bool checkBoulderRouteConfiguration(thing)
+ bool checkBoulderRouteConfiguration(ABoulderingRoute thing)
  {
+ 	for (prop <- thing.aproperties) {
+ 		switch(prop) {
+ 		case grade(str s):
+        {
+        	println(s);
+        }
+        case gridBasePoint(AGridBasePoint point):
+        {
+        	println(point.x);
+        }
+        case identifier(AId id):
+        {
+        	println(id);
+        }
+        case holdlist(list[AHold] holds):
+        {
+        	checkHoldPropertiesConfiguration(holds);
+        }
+        
+ 		default:
+ 			throw "Unexpected Route_property: <prop>";
+ 		}
+ 	}
  	return true;
  }
+
+bool checkHoldPropertiesConfiguration(list[AHold] holds)
+ {
+ 	for (hold <- holds) {
+ 		println(hold);
+ 	}
+ 	return true;
+ }
+//
+//bool checkHoldPropertyConfiguration(AHoldExpr thing)
+// {
+// 	for (expr <- thing.expressions) {
+// 		;
+// 	}
+// 	return true;
+// }
 
  /*
  * determine between 0 and 2 start holds
@@ -48,7 +89,6 @@ void hello()
  * idem for having the route colour be valid, we could just use a datatype (e.g. enum) for it tho
  *
  * the hold rotation values are just a match statement
- * testtesttest
  */
  
 /*
