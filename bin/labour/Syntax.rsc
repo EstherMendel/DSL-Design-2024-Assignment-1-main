@@ -8,6 +8,7 @@ lexical Id = "\"" ![\r\n]* "\"";
 lexical Integer = [0-9]+;
 lexical Color = "white" | "yellow" | "green" | "blue" | "red" | "purple" | "pink" | "black" | "orange";
 lexical Str = "\"" ![\"]*  "\"";
+
  
 layout Layout = [\ \t\n\r]*;
 

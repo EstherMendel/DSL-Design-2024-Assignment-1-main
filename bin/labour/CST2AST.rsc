@@ -4,6 +4,9 @@ import labour::AST;
 import labour::Syntax;
 import IO;
 
+import Type;
+import String;
+
 
 /*
  * Implement a mapping from concrete syntax trees (CSTs) to abstract syntax trees (ASTs)
@@ -24,9 +27,108 @@ ABoulderingRoute cst2ast(start[BoulderingRoute] sr) {
 		//return 0;
     }
     
+//list[ARoute_property] toList({Route_property "," }+ properties) {
+//	println(properties);
+//    return [grade("1a")];
+//}
+
+//behold, ChatGPT code
+
+// Function to transform the list of Route_property
 list[ARoute_property] toList({Route_property "," }+ properties) {
-	println(properties);
-    return [grade("1a")];
+    list[ARoute_property] result = [];
+    for (Route_property prop <- properties) {
+        result += toARouteProperty(prop);
+    }
+    return result;
+}
+
+// Function to transform individual Route_property
+ARoute_property toARouteProperty(Route_property prop) {
+	println("Processing Route_property: <prop>");
+	println("Type of prop: <typeOf(prop)>");
+	//println("Concrete type: <prop.concreteType()>");
+    switch (prop) {
+        //okay this works, but I am 100% sure I did this before
+        case (Route_property)`grade: <Str s>`: 
+        {
+        	println("matched with grade!");
+        	return grade("<s>");
+        }
+        case (Route_property)`grid_base_point { x: <Integer i>, y: <Integer j> }`:
+        {
+        	println("matched with grid base point!");
+        	//yes this looks dumb, but that is just how we defined it hehe
+        	return gridBasePoint(gridBasePoint(toInt("<i>"), toInt("<j>")));
+        }
+        case (Route_property)`identifier <Id i>`:
+        {
+        	println("matched with identifier!!");
+        	return identifier(id("<i>"));
+        }
+        case (Route_property)`<Hold* holds>`: 
+        {
+        	println("matched with holdlist!");
+        	return holdlist(toList(holds));
+        }
+ 		default:
+ 			throw "Unexpected Route_property: <prop>";
+    }
+}
+
+list[AHold] toList(Hold* holds) {
+	list[AHold] result = [];
+    for (Hold hold <- holds) {
+        result += toAHold(hold);
+    }
+    return result;
+    //return [cst2ast(q) | (Question q <- questions)];
 }
 
 
+// Function to transform individual Route_property
+AHold toAHold(Hold hold) {
+	println("Processing Hold: <hold>");
+	println("Type of hold: <typeOf(hold)>");
+	//println("Concrete type: <prop.concreteType()>");
+    switch (hold) {
+        //okay this works, but I am 100% sure I did this before
+        case (Hold)`x: <Integer x>`: 
+        {
+        	println("matched an x!");
+        	return x(toInt("<x>"));
+        }
+        case (Hold)`y: <Integer y>`: 
+        {
+        	println("matched an y!");
+        	return y(toInt("<y>"));
+        }
+        case (Route_property)`shape <Id s>`:
+        {
+        	println("matched with shape!!");
+        	return shape(id("<s>"));
+        }
+        case (Route_property)`rotation <Integer r>`:
+        {
+        	println("matched with rotation!");
+        	return rotation(toInt("<r>"));
+        }
+        case (Route_property)`color <Color c>`:
+        {
+        	println("matched with color!");
+        	return color(color("<c>"));
+        }
+        case (Route_property)`startingLabels <Integer sl>`:
+        {
+        	println("matched with startingLabel!");
+        	return startingLabels(toInt("<sl>"));
+        }
+        case (Route_property)`endLabel`:
+        {
+        	println("matched with endLabel!");
+        	return endLabel();
+        }
+ 		default:
+ 			throw "Unexpected Route_property: <prop>";
+    }
+}

@@ -77,7 +77,58 @@ ARoute_property toARouteProperty(Route_property prop) {
 }
 
 list[AHold] toList(Hold* holds) {
-	println("even the call to toList works!");
-	return 0;
+	list[AHold] result = [];
+    for (Hold hold <- holds) {
+        result += toAHold(hold);
+    }
+    return result;
     //return [cst2ast(q) | (Question q <- questions)];
+}
+
+
+// Function to transform individual Route_property
+AHold toAHold(Hold hold) {
+	println("Processing Hold: <hold>");
+	println("Type of hold: <typeOf(hold)>");
+	//println("Concrete type: <prop.concreteType()>");
+    switch (hold) {
+        //okay this works, but I am 100% sure I did this before
+        case (Hold)`x: <Integer x>`: 
+        {
+        	println("matched an x!");
+        	return x(toInt("<x>"));
+        }
+        case (Hold)`y: <Integer y>`: 
+        {
+        	println("matched an y!");
+        	return y(toInt("<y>"));
+        }
+        case (Route_property)`shape <Id s>`:
+        {
+        	println("matched with shape!!");
+        	return shape(id("<s>"));
+        }
+        case (Route_property)`rotation <Integer r>`:
+        {
+        	println("matched with rotation!");
+        	return rotation(toInt("<r>"));
+        }
+        case (Route_property)`color <Color c>`:
+        {
+        	println("matched with color!");
+        	return color(color("<c>"));
+        }
+        case (Route_property)`startingLabels <Integer sl>`:
+        {
+        	println("matched with startingLabel!");
+        	return startingLabels(toInt("<sl>"));
+        }
+        case (Route_property)`endLabel`:
+        {
+        	println("matched with endLabel!");
+        	return endLabel();
+        }
+ 		default:
+ 			throw "Unexpected Route_property: <prop>";
+    }
 }
