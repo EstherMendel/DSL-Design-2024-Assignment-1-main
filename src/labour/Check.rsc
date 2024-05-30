@@ -69,7 +69,8 @@ void hello()
  			throw "Unexpected Route_property: <prop>";
  		}
  	}
- 	return true;
+ 	//a lot of the bools are missing because as said earlier the function exits early if these become false
+ 	return atLeastTwoHolds && hasGrade && hasGridBasePoint && hasGrade && hasGridBasePoint && gridBasePointIsValid && hasEndHold;
  }
 
 bool checkHoldPropertiesConfiguration(list[AHold] holds)
