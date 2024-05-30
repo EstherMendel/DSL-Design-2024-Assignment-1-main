@@ -65,7 +65,10 @@ void main() {
   	//println(checkWellformedness(|project://LaBouR//testfiles/invalid_rotation.labour|));
   	println("Checking a valid long route:");
   	println(checkWellformedness(|project://LaBouR//testfiles/epic_long_route.labour|));
+  	println("Checking for duplicate route properties:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/duplicate_route_properties.labour|));
 }
+
 
 //THIS COMMAND IN THE TERMINAL:
 //checkWellformedness(|project://LaBouR/example.labour|);

@@ -51,6 +51,19 @@ void hello()
  bool hasRotation = false;
  bool hasColor = false;
  
+ //extra requirements not specified in the doc, but do make sense
+ //these were made in consultation with the teacher
+ //as of course, it makes no sense for there to be multiple of these in a route
+ bool maxOneGrade = true;
+ bool maxOneGbp = true;
+ bool maxOneId = true;
+ bool maxOneHoldList = true;
+ 
+ int no_grades = 0;
+ int no_gbps = 0;
+ int no_ids = 0;
+ int no_holdlists = 0;
+ 
  //used to check for same colors
  list[AColor] colors = [];
  
@@ -76,6 +89,11 @@ void hello()
  	
  	colors=[];
  	
+ 	no_grades = 0;
+ 	no_gbps = 0;
+	no_ids = 0;
+	no_holdlists = 0;
+ 	
  	//go over each property
  	for (prop <- thing.aproperties) {
  		switch(prop) {
@@ -83,6 +101,7 @@ void hello()
         {
         	//set to true if route has grade
         	hasGrade = true;
+        	no_grades = no_grades + 1;
         }
         case gridBasePoint(AGridBasePoint point):
         {
@@ -90,16 +109,19 @@ void hello()
         	hasGridBasePoint = true;
         	//check holdproperty requirement
         	//checkGridBasePointConfiguration(point);
+        	no_gbps = no_gbps + 1;
         }
         case identifier(AId id):
         {
         	//set to true if route has identifier
         	hasIdentifier = true;
+        	no_ids = no_ids + 1;
         }
         case holdlist(list[AHold] holds):
         {
         	//check each hold's requirements
         	checkHoldPropertiesConfiguration(holds);
+        	no_holdlists = no_holdlists + 1;
         }
         
  		default:
@@ -167,6 +189,27 @@ void hello()
  	if(!hasGrade) {
  		println("Your route has no grade");
  	}
+ 	
+ 	if(no_grades > 1)
+ 	{
+ 		println("Your route has multiple grades");
+ 		maxOneGrade = false;
+ 	}
+ 	if(no_gbps > 1)
+ 	{
+ 		println("Your route has multiple grid base points");
+ 		maxOneGbp = false;
+ 	}
+ 	if(no_ids > 1)
+ 	{
+ 		println("Your route has multiple ids");
+ 		maxOneId = false;
+ 	}
+ 	if(no_holdlists > 1)
+ 	{
+ 		println("Your route has multiple hold lists");
+ 		maxOneHoldList = false;
+ 	}
     
     //return the combination of all statements, if not all are true, the input is invalid and false will be returned
  	return atLeastTwoHolds && betweenZeroAndTwoStartHolds 
@@ -174,7 +217,8 @@ void hello()
  	&& noMoreThanTwoStartLabelStripsPerHold 
  	&& hasEndHold && hasSameColor && allHoldsAreValid
  	// && gridBasePointIsValid &&
- 	&& colorsAreValid && holdRotationBetween0And359;
+ 	&& colorsAreValid && holdRotationBetween0And359
+ 	&& maxOneGrade && maxOneGbp && maxOneId && maxOneHoldList;
  
  }
  
