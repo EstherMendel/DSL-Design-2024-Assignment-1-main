@@ -74,7 +74,6 @@ void hello()
  
  bool checkBoulderRouteConfiguration(ABoulderingRoute thing)
  {
- 	//if any of the bools that are true become false, you can instantly return false and print out why
  	//at the end we check the conjunction of the remaining ones and print out if any are false and why
  	atLeastTwoHolds = false;
  	betweenZeroAndTwoStartHolds = true;//
