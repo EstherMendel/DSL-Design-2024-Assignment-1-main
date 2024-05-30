@@ -49,18 +49,17 @@ ARoute_property toARouteProperty(Route_property prop) {
 	println("Type of prop: <typeOf(prop)>");
 	//println("Concrete type: <prop.concreteType()>");
     switch (prop) {
-        case Grade g:
+        //okay this works, but I am 100% sure I did this before
+        case (Route_property)`grade: <Str s>`: 
         {
-        	Grade g = <prop>;
-            println("Matched Grade with value: <g.s>");
-            return grade("<g.s>");
+        	println("matched with grade!");
+        	return grade("<s>");
         }
-        case (Route_property)`grade: <Str s>`:
+        case (Route_property)`grid_base_point { x: <Integer i>, y: <Integer j> }`:
         {
-        	println("Matched Grade with value: <s>");
-        	println("Type of string: <typeOf(<s>)>");
-        	println(<s>[0]);
-            return grade(toStr(<s>[0]));
+        	println("matched with grid base point!");
+        	//yes this looks dumb, but that is just how we defined it hehe
+        	return gridBasePoint(gridBasePoint(toInt("<i>"), toInt("<j>")));
         }
  //       case GridBasePoint gbp:
  //           return gridBasePoint(toAGridBasePoint(gbp));
@@ -73,14 +72,7 @@ ARoute_property toARouteProperty(Route_property prop) {
     }
 }
 
-// Function to transform Grade
-// this bulshit argument type brought to you by the parser who just decided this is what a Str is.
-str toStr(Str s) {
-	println("Inside toStr with Str: <s>");
-	println("Type of string: <typeOf(<s>[0])>");
-	println("here goes nothing!");
-	Str content = <s>[0];
-	str contentStr = content;
-	println("Content string: <contentStr>");
-    return substring(contentStr, 1, size(contentStr) - 1);  // Remove the quotes
+AGridBasePoint gbp2agbp(Route_property gbp)
+{
+	return gridBasePoint(<i>, <j>);
 }
