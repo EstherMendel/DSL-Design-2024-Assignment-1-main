@@ -63,6 +63,8 @@ void main() {
   	//}
   	//println("Check for Invalid Rotation:");
   	//println(checkWellformedness(|project://LaBouR//testfiles/invalid_rotation.labour|));
+  	println("Checking a valid long route:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/epic_long_route.labour|));
 }
 
 //THIS COMMAND IN THE TERMINAL:

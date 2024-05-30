@@ -74,6 +74,8 @@ void hello()
  	startHoldCounter = 0;
  	startLabelCounter = 0;
  	
+ 	colors=[];
+ 	
  	//go over each property
  	for (prop <- thing.aproperties) {
  		switch(prop) {

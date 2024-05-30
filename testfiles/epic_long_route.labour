@@ -1,0 +1,52 @@
+bouldering_route {
+	identifier "4827592",
+	grade: "9A726",
+	hold{
+		x:0,
+		rotation: 90,
+		y:0,
+		starting_labels:2,
+		shape:"2",
+		color: pink
+	}
+	hold{
+		x:24,
+		rotation: 270,
+		color: pink,
+		y:24,
+		shape:"19"
+	}
+	hold{
+		y:52,
+		x:53,
+		shape:"42",
+		rotation: 52,
+		color: pink
+	}
+	hold{
+		y:48,
+		x:58,
+		shape:"920",
+		rotation: 1,
+		color: pink
+	}
+	hold{
+		y:70,
+		x:92,
+		shape:"1",
+		rotation: 38,
+		color: pink
+	}
+	hold{
+		x:102,
+		y:57,
+		shape:"5291",
+		rotation: 359,
+		color: pink,
+		end_label
+	},
+	grid_base_point {
+		x: 69,
+		y: 420
+	}
+}
