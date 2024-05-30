@@ -61,8 +61,11 @@ ARoute_property toARouteProperty(Route_property prop) {
         	//yes this looks dumb, but that is just how we defined it hehe
         	return gridBasePoint(gridBasePoint(toInt("<i>"), toInt("<j>")));
         }
- //       case GridBasePoint gbp:
- //           return gridBasePoint(toAGridBasePoint(gbp));
+        case (Route_property)`identifier <Id i>`:
+        {
+        	println("matched with identifier!!");
+        	return identifier(id("<i>"));
+        }
  //       case Identifier id:
  //          return identifier(toAId(id.id));
  //       case Holdlist hl:
