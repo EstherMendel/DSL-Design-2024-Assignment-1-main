@@ -38,32 +38,37 @@ void main() {
   	});
   	println("Check for correct route");
   	println(checkWellformedness(|project://LaBouR//testfiles/example.labour|));
-  	//println("Check for non-uniform colors:");
-  	//println(checkWellformedness(|project://LaBouR//testfiles/nonuniform_colors.labour|));
-  	//println("Check for only 1 hold:");
-  	//println(checkWellformedness(|project://LaBouR//testfiles/only_one_hold.labour|));
-  	//println("Check for more than 2 start holds:");
-  	//println(checkWellformedness(|project://LaBouR//testfiles/more_than_two_start_holds.labour|));
-  	//println("Check for no Grid Base Point:");
-  	//println(checkWellformedness(|project://LaBouR//testfiles/no_gbp.labour|));
-  	//println("Check for no Only a GBP:");
-  	//println(checkWellformedness(|project://LaBouR//testfiles/only_a_gbp.labour|));
-  	//println("Check for Invalid GBP:");
-  	//println(checkWellformedness(|project://LaBouR//testfiles/invalid_gbp.labour|));
-  	//println("Check for Invalid Holds:");
-  	//println(checkWellformedness(|project://LaBouR//testfiles/invalid_holds.labour|));
-  	//println("Check for Invalid Colors, this is caught in the AST!:");
-  	//try
-  	//{
-  	//	println(checkWellformedness(|project://LaBouR//testfiles/invalid_color.labour|));
-  	//}
-  	//catch:
-  	//{
-  	//	println("Exception caught!");
-  	//}
-  	//println("Check for Invalid Rotation:");
-  	//println(checkWellformedness(|project://LaBouR//testfiles/invalid_rotation.labour|));
+  	println("Check for non-uniform colors:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/nonuniform_colors.labour|));
+  	println("Check for only 1 hold:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/only_one_hold.labour|));
+  	println("Check for more than 2 start holds:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/more_than_two_start_holds.labour|));
+  	println("Check for no Grid Base Point:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/no_gbp.labour|));
+  	println("Check for no Only a GBP:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/only_a_gbp.labour|));
+  	println("Check for Invalid GBP:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/invalid_gbp.labour|));
+  	println("Check for Invalid Holds:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/invalid_holds.labour|));
+  	println("Check for Invalid Colors, this is caught in the AST!:");
+  	try
+  	{
+  		println(checkWellformedness(|project://LaBouR//testfiles/invalid_color.labour|));
+  	}
+  	catch:
+  	{
+  		println("Exception caught!");
+  	}
+  	println("Check for Invalid Rotation:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/invalid_rotation.labour|));
+  	println("Checking a valid long route:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/epic_long_route.labour|));
+  	println("Checking for duplicate route properties:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/duplicate_route_properties.labour|));
 }
+
 
 //THIS COMMAND IN THE TERMINAL:
 //checkWellformedness(|project://LaBouR/example.labour|);

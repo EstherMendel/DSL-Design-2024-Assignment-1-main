@@ -231,7 +231,6 @@ bool checkGridBasePointConfiguration(AGridBasePoint point)
  	gridY = false;
  	
 	for (coord <- point.coords) {
-		print(coord);
 		switch(coord) {
 			case x(int i): {
 				gridX = true;
