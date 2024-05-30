@@ -45,8 +45,8 @@ void hello()
  bool gridBasePointIsValid = false;
  bool hasEndHold = false;
  
- bool gridX = false;
- bool gridY = false;
+ int counterX = 0;
+ int counterY = 0;
  
  bool hasX = false;
  bool hasY = false;
@@ -66,6 +66,7 @@ void hello()
  int no_gbps = 0;
  int no_ids = 0;
  int no_holdlists = 0;
+ 
  
  //used to check for same colors
  list[AColor] colors = [];
@@ -227,22 +228,25 @@ void hello()
 //check if gridbasepoint has x and y
 bool checkGridBasePointConfiguration(AGridBasePoint point)
  {
- 	gridX = false;
- 	gridY = false;
+ 	counterX =0;
+ 	counterY=0;
  	
 	for (coord <- point.coords) {
 		switch(coord) {
 			case x(int i): {
-				gridX = true;
+				counterX += 1;
 			}
 			case y(int j): {
- 				gridY = true;
+ 				counterY+=1;
 			}
 			default:
 				throw "Unexpected gridbasepoint: <coord>";
 		}
 	}
-	gridBasePointIsValid = gridX && gridY;
+	gridBasePointIsValid = (counterX == 1) && (counterY==1);
+	if (!gridBasePointIsValid) {
+		println("your gridbasepoint does not have exactly 1 x and 1 y");
+	}
  	return true;
  }
 
