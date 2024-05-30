@@ -211,13 +211,3 @@ bool checkHoldPropertyConfiguration(AHold thing)
 /*
 * Define a function per each verification defined in the PDF (Section 2.2.)
 */
-
-/*
-* yeah, so like, this is what gets called upon startup
-*/
-void main()
-{
-	hello();
-	println(checkBoulderRouteConfiguration());
-	println(":(");
-}
