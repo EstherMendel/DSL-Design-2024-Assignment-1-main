@@ -147,8 +147,21 @@ AHoldExpr toAHoldExpr(HoldExpr hold) {
     }
 }
 
+//yes, this is just a big switch statement with string matching
 AColor strToColor(str c)
 {
 	println("Processing Color: <c>");
-	return white();
+	switch(c)
+	{
+		case "white": return white();
+		case "yellow": return yellow();
+		case "green": return green();
+		case "blue": return blue();
+		case "red": return red();
+		case "purple": return purple();
+		case "pink": return pink();
+		case "black": return black();
+		case "orange": return orange();
+		default: throw "Unexpected Color: <c>";
+	}
 }
