@@ -2,9 +2,11 @@ module labour::Syntax
 /*
  * Define a concrete syntax for LaBouR. The langauge's specification is available in the PDF (Section 2)
  */
+
  
 lexical Id = "\"" ![\r\n]* "\"";
 lexical Integer = [0-9]+;
+//we hard code the colors, so inputting a wrong color will lead to a parse error
 lexical Color = "white" | "yellow" | "green" | "blue" | "red" | "purple" | "pink" | "black" | "orange";
 lexical Str = "\"" ![\"]*  "\"";
 
@@ -21,7 +23,6 @@ syntax Route_property = Grade
 
 syntax Grade = "grade:" Str;
 
-//TODO, CHANGE TO ALLOW FOR INVALID ONES
 syntax GridBasePoint = "grid_base_point" "{" {GBPExpr ","}* exprs "}";
 
 syntax GBPExpr = "x:" Integer
