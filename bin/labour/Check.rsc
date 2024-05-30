@@ -34,6 +34,7 @@ void hello()
  bool hasSameColor = true;
  bool allHoldsAreValid = true;
  bool colorsAreValid = true;
+ bool hasValidRotation = true;
  bool holdRotationBetween0And359 = true;
  bool noMoreThanTwoStartLabelStripsPerHold = true;
  
@@ -83,7 +84,9 @@ void hello()
  	gridBasePointIsValid = false;
  	noMoreThanTwoStartLabelStripsPerHold = true;
  	hasEndHold = false;//
+ 	allHoldsAreValid = true;
  	hasSameColor = true;
+ 	hasValidRotation = true;
  	colorsAreValid = true;
  	holdRotationBetween0And359 = true;
  	colors=[];
@@ -98,6 +101,12 @@ void hello()
  	no_gbps = 0;
 	no_ids = 0;
 	no_holdlists = 0;
+	counterX = 0;
+ 	counterY = 0;
+ 	maxOneGrade = true;
+ 	maxOneGbp = true;
+ 	maxOneId = true;
+ 	maxOneHoldList = true;
  	
  	//go over each property
  	for (prop <- thing.aproperties) {
@@ -220,7 +229,7 @@ void hello()
     //return the combination of all statements, if not all are true, the input is invalid and false will be returned
  	return atLeastTwoHolds && betweenZeroAndTwoStartHolds 
  	&& hasGrade && hasGridBasePoint && hasIdentifier 
- 	&& noMoreThanTwoStartLabelStripsPerHold 
+ 	&& noMoreThanTwoStartLabelStripsPerHold
  	&& hasEndHold && hasSameColor && allHoldsAreValid && gridBasePointIsValid && colorsAreValid && holdRotationBetween0And359;
  
  }
@@ -293,7 +302,7 @@ bool checkHoldPropertiesConfiguration(list[AHold] holds)
 		}
 		
 		//if any hold is not correct, not all holds are valid, which should affect the final return
-		if (!(hasX && hasY && hasShape && hasRotation && hasColor)) {
+		if (!(hasX && hasY && hasShape && hasRotation && hasColor && hasValidRotation)) {
 			allHoldsAreValid = false;
 		}
  	}

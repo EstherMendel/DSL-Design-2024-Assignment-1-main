@@ -57,6 +57,8 @@ void main() {
   	{
   		println(checkWellformedness(|project://LaBouR//testfiles/invalid_color.labour|));
   	}
+  	//I couldn't manage to specify the correct exception, if you remove this statement you will see
+  	//that the exception is the one specified in 'Check.rsc'
   	catch:
   	{
   		println("Exception caught!");

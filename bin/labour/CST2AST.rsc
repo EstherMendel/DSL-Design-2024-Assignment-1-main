@@ -17,19 +17,15 @@ import String;
 
 import ParseTree;
 
-// Function to transform boulderingroute to 
+//Start of the translation function
 ABoulderingRoute cst2ast(start[BoulderingRoute] sr) {
-//ABoulderingRoute cst2ast(Tree sr) {
-		//start[BoulderingRoute] route = sr;
 		BoulderingRoute r = sr.top;
 		ABoulderingRoute result = boulderingRoute(toList(r.properties));
 		return result;
-		//return 0;
     }
 
-//behold, ChatGPT code
 
-// Function to transform the list of Route_property
+//Transforms the list of Route_properties
 list[ARoute_property] toList({Route_property "," }+ properties) {
     list[ARoute_property] result = [];
     for (Route_property prop <- properties) {
@@ -38,13 +34,9 @@ list[ARoute_property] toList({Route_property "," }+ properties) {
     return result;
 }
 
-// Function to transform individual Route_property
+//Transforms individual Route_properties
 ARoute_property toARouteProperty(Route_property prop) {
-//	println("Processing Route_property: <prop>");
-//	println("Type of prop: <typeOf(prop)>");
-	//println("Concrete type: <prop.concreteType()>");
     switch (prop) {
-        //okay this works, but I am 100% sure I did this before
         case (Route_property)`grade: <Str s>`: 
         {
         	return grade("<s>");
@@ -61,11 +53,13 @@ ARoute_property toARouteProperty(Route_property prop) {
         {
         	return holdlist(toList(holds));
         }
+        //we should never reach here
  		default:
  			throw "Unexpected Route_property: <prop>";
     }
 }
 
+//handles the list of gbpExprs and hands back a list of AHoldExprs (see AST.rsc for explanation why)
 list[AHoldExpr] toList({GBPExpr ","}* exprs)
 {
 	list[AHoldExpr] result = [];
@@ -75,6 +69,7 @@ list[AHoldExpr] toList({GBPExpr ","}* exprs)
     return result;
 }
 
+//handles individual GBPExprs
 AHoldExpr toAgbpExpr(GBPExpr expr)
 {
 	switch (expr) {
@@ -91,34 +86,28 @@ AHoldExpr toAgbpExpr(GBPExpr expr)
  	}
 }
 
-//this is the LIST of holds
+//this handles a LIST of holds
 list[AHold] toList(Hold* holds) {
 	list[AHold] result = [];
     for (Hold hold <- holds) {
         result += toList(hold.holdexpressions);
     }
     return result;
-    //return [cst2ast(q) | (Question q <- questions)];
 }
 
-//this is ONE hold
+//this handles ONE hold
 AHold toList({HoldExpr "," }+ holdexprs) {
 	list[AHoldExpr] result = [];
     for (HoldExpr holdexpr <- holdexprs) {
         result += toAHoldExpr(holdexpr);
     }
     return hold(result);
-    //return [cst2ast(q) | (Question q <- questions)];
 }
 
 
-// Function to transform individual Route_property
+// Function to transform an individual holdExpr
 AHoldExpr toAHoldExpr(HoldExpr hold) {
-//	println("Processing HoldExpr: <hold>");
-//	println("Type of Expr: <typeOf(hold)>");
-	//println("Concrete type: <prop.concreteType()>");
     switch (hold) {
-        //okay this works, but I am 100% sure I did this before
         case (HoldExpr)`x: <Integer i>`: 
         {
         	return x(toInt("<i>"));
@@ -137,6 +126,8 @@ AHoldExpr toAHoldExpr(HoldExpr hold) {
         }
         case (HoldExpr)`color: <Color c>`:
         {
+        	//typecast to string, to match the string to an actual color
+        	//this is why it gives errors when you input incorrect colors
         	str col = "<c>";
         	return color(strToColor(col));
         }
