@@ -23,6 +23,8 @@ void hello()
  * Create a function called checkBoulderRouteConfiguration(...), which is responsible for calling all the required functions that check the program's well-formedness as described in the PDF (Section 2.2.) 
  * This function takes as a parameter the program's AST and returns true if the program is well-formed or false otherwise.
  */
+ list[AColor] colors = [];
+ 
  bool checkBoulderRouteConfiguration(ABoulderingRoute thing)
  {
  	//beware of a massive block of booleans
@@ -42,7 +44,6 @@ void hello()
  	//combined one for x,y, etc.
  	bool allHoldsAreValid = true;
  	//this one CAN'T be false as it is enforced in the CST2AST
- 	bool colorsAreValid = true;
  	bool holdRotationBetween0And359 = true;
  	
  	
@@ -69,6 +70,16 @@ void hello()
  			throw "Unexpected Route_property: <prop>";
  		}
  	}
+ 	if (!isEmpty(colors)) {
+	 	AColor firstColor = colors[0];
+	    for (AColor color <- colors) {
+	        if (color != firstColor) {
+	            hasSameColor=false;
+	            break;
+	        }
+	    }
+    }
+ 	println("end");
  	return true;
  }
 
@@ -98,11 +109,14 @@ bool checkHoldPropertyConfiguration(AHold thing)
         }
         case rotation(int r):
         {
-        	println(r);
+        	println(r>0);
+        	if (r < 0 || r > 359) {
+            	hasValidRotation = false;
+        	};
         }
         case color(AColor c):
         {
-        	println(c);
+        	colors += [c];
         }
         case startingLabels(int i):
         {
@@ -110,7 +124,7 @@ bool checkHoldPropertyConfiguration(AHold thing)
         }
         case endLabel():
         {
-        	println("heee");
+        	hasEndHold = true;
         }        
  		default:
  			throw "Unexpected Expressions: <expr>";

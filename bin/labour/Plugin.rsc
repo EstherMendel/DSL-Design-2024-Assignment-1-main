@@ -35,7 +35,7 @@ void main() {
 	registerLanguage("LaBouR - DSLD", "labour", Tree(str _, loc path) {
 		return parserLaBouR(path);
   	});
-  	checkWellformedness(|project://LaBouR/example.labour|);
+  	println(checkWellformedness(|project://LaBouR/example.labour|));
 }
 
 //THIS COMMAND IN THE TERMINAL:

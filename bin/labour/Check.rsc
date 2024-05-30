@@ -23,8 +23,30 @@ void hello()
  * Create a function called checkBoulderRouteConfiguration(...), which is responsible for calling all the required functions that check the program's well-formedness as described in the PDF (Section 2.2.) 
  * This function takes as a parameter the program's AST and returns true if the program is well-formed or false otherwise.
  */
+ list[AColor] colors = [];
+ 
  bool checkBoulderRouteConfiguration(ABoulderingRoute thing)
  {
+ 	//beware of a massive block of booleans
+ 	//if any of the bools that are true become false, you can instantly return false and print out why
+ 	//at the end we check the conjunction of the remaining ones 
+ 	bool atLeastTwoHolds = false;
+ 	bool betweenZeroAndTwoStartHolds = true;
+ 	bool hasGrade = false;
+ 	//we do not check wether there is only 1 gbp
+ 	bool hasGridBasePoint = false;
+ 	//combined one for x and y
+ 	bool gridBasePointIsValid = false;
+ 	bool noMoreThanTwoStartLabelStripsPerHold = true;
+ 	bool maxTwoStartLabelStrips = true;
+ 	bool hasEndHold = false;
+ 	bool hasSameColor = true;
+ 	//combined one for x,y, etc.
+ 	bool allHoldsAreValid = true;
+ 	//this one CAN'T be false as it is enforced in the CST2AST
+ 	bool holdRotationBetween0And359 = true;
+ 	
+ 	
  	for (prop <- thing.aproperties) {
  		switch(prop) {
  		case grade(str s):
@@ -48,6 +70,16 @@ void hello()
  			throw "Unexpected Route_property: <prop>";
  		}
  	}
+ 	if (!isEmpty(colors)) {
+	 	AColor firstColor = colors[0];
+	    for (AColor color <- colors) {
+	        if (color != firstColor) {
+	            hasSameColor=false;
+	            break;
+	        }
+	    }
+    }
+ 	println("end");
  	return true;
  }
 
@@ -77,11 +109,14 @@ bool checkHoldPropertyConfiguration(AHold thing)
         }
         case rotation(int r):
         {
-        	println(r);
+        	println(r>0);
+        	if (r < 0 || r > 359) {
+            	hasValidRotation = false;
+        	};
         }
         case color(AColor c):
         {
-        	println(c);
+        	colors += [c];
         }
         case startingLabels(int i):
         {
@@ -89,7 +124,7 @@ bool checkHoldPropertyConfiguration(AHold thing)
         }
         case endLabel():
         {
-        	println("heee");
+        	hasEndHold = true;
         }        
  		default:
  			throw "Unexpected Expressions: <expr>";
