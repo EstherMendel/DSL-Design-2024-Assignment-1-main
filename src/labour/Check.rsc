@@ -42,8 +42,11 @@ void hello()
  bool hasGrade = false;
  bool hasGridBasePoint = false;
  bool hasIdentifier = false;
- //bool gridBasePointIsValid = false;
+ bool gridBasePointIsValid = false;
  bool hasEndHold = false;
+ 
+ bool gridX = false;
+ bool gridY = false;
  
  bool hasX = false;
  bool hasY = false;
@@ -63,12 +66,13 @@ void hello()
  	hasGrade = false;//
  	hasGridBasePoint = false;//
  	hasIdentifier = false;//
- 	//gridBasePointIsValid = false;
+ 	gridBasePointIsValid = false;
  	noMoreThanTwoStartLabelStripsPerHold = true;
  	hasEndHold = false;//
  	hasSameColor = true;
  	colorsAreValid = true;
  	holdRotationBetween0And359 = true;
+ 	colors=[];
  	
  	holdCounter = 0;
  	startHoldCounter = 0;
@@ -87,7 +91,7 @@ void hello()
         	//set to true if route has gridbasepoint
         	hasGridBasePoint = true;
         	//check holdproperty requirement
-        	//checkGridBasePointConfiguration(point);
+        	checkGridBasePointConfiguration(point);
         }
         case identifier(AId id):
         {
@@ -170,16 +174,32 @@ void hello()
  	return atLeastTwoHolds && betweenZeroAndTwoStartHolds 
  	&& hasGrade && hasGridBasePoint && hasIdentifier 
  	&& noMoreThanTwoStartLabelStripsPerHold 
- 	&& hasEndHold && hasSameColor && allHoldsAreValid
- 	// && gridBasePointIsValid &&
- 	&& colorsAreValid && holdRotationBetween0And359;
+ 	&& hasEndHold && hasSameColor && allHoldsAreValid && gridBasePointIsValid && colorsAreValid && holdRotationBetween0And359;
  
  }
- 
- //TODO!!!!---------------------------------------------------
-//bool checkGridBasePointConfiguration(AGridBasePoint point)
-// {
-// }
+
+//check if gridbasepoint has x and y
+bool checkGridBasePointConfiguration(AGridBasePoint point)
+ {
+ 	gridX = false;
+ 	gridY = false;
+ 	
+	for (coord <- point.coords) {
+		print(coord);
+		switch(coord) {
+			case x(int i): {
+				gridX = true;
+			}
+			case y(int j): {
+ 				gridY = true;
+			}
+			default:
+				throw "Unexpected gridbasepoint: <coord>";
+		}
+	}
+	gridBasePointIsValid = gridX && gridY;
+ 	return true;
+ }
 
 //checks the holdlist
 bool checkHoldPropertiesConfiguration(list[AHold] holds)
