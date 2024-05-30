@@ -66,16 +66,18 @@ ARoute_property toARouteProperty(Route_property prop) {
         	println("matched with identifier!!");
         	return identifier(id("<i>"));
         }
- //       case Identifier id:
- //          return identifier(toAId(id.id));
- //       case Holdlist hl:
- //           return holdlist(toAHoldList(hl));
+        case (Route_property)`<Hold* holds>`: 
+        {
+        	println("matched with holdlist!");
+        	return holdlist(toList(holds));
+        }
  		default:
  			throw "Unexpected Route_property: <prop>";
     }
 }
 
-AGridBasePoint gbp2agbp(Route_property gbp)
-{
-	return gridBasePoint(<i>, <j>);
+list[AHold] toList(Hold* holds) {
+	println("even the call to toList works!");
+	return 0;
+    //return [cst2ast(q) | (Question q <- questions)];
 }
