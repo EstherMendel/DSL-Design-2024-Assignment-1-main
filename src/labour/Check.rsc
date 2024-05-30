@@ -25,6 +25,27 @@ void hello()
  */
  bool checkBoulderRouteConfiguration(ABoulderingRoute thing)
  {
+ 	//beware of a massive block of booleans
+ 	//if any of the bools that are true become false, you can instantly return false and print out why
+ 	//at the end we check the conjunction of the remaining ones 
+ 	bool atLeastTwoHolds = false;
+ 	bool betweenZeroAndTwoStartHolds = true;
+ 	bool hasGrade = false;
+ 	//we do not check wether there is only 1 gbp
+ 	bool hasGridBasePoint = false;
+ 	//combined one for x and y
+ 	bool gridBasePointIsValid = false;
+ 	bool noMoreThanTwoStartLabelStripsPerHold = true;
+ 	bool maxTwoStartLabelStrips = true;
+ 	bool hasEndHold = false;
+ 	bool hasSameColor = true;
+ 	//combined one for x,y, etc.
+ 	bool allHoldsAreValid = true;
+ 	//this one CAN'T be false as it is enforced in the CST2AST
+ 	bool colorsAreValid = true;
+ 	bool holdRotationBetween0And359 = true;
+ 	
+ 	
  	for (prop <- thing.aproperties) {
  		switch(prop) {
  		case grade(str s):
