@@ -46,6 +46,8 @@ void hello()
  bool colorsAreValid = true;
  bool holdRotationBetween0And359 = true;
  
+ list[AColor] colors = [];
+ 
  bool checkBoulderRouteConfiguration(ABoulderingRoute thing)
  {
  	//if any of the bools that are true become false, you can instantly return false and print out why
@@ -91,8 +93,7 @@ void hello()
  			throw "Unexpected Route_property: <prop>";
  		}
  	}
- 	//a lot of the bools are missing because as said earlier the function exits early if these become false
- 	return atLeastTwoHolds && betweenZeroAndTwoStartHolds && hasGrade && hasGridBasePoint && hasGrade && hasGridBasePoint && hasIdentifier && gridBasePointIsValid && noMoreThanTwoStartLabelStripsPerHold && maxTwoStartLabelStrips && hasEndHold && hasSameColor && allHoldsAreValid&& colorsAreValid && holdRotationBetween0And359;
+ 	
  	if (!isEmpty(colors)) {
 	 	AColor firstColor = colors[0];
 	    for (AColor color <- colors) {
@@ -102,8 +103,9 @@ void hello()
 	        }
 	    }
     }
- 	println("end");
- 	return true;
+ 	//a lot of the bools are missing because as said earlier the function exits early if these become false
+ 	return atLeastTwoHolds && betweenZeroAndTwoStartHolds && hasGrade && hasGridBasePoint && hasGrade && hasGridBasePoint && hasIdentifier && gridBasePointIsValid && noMoreThanTwoStartLabelStripsPerHold && maxTwoStartLabelStrips && hasEndHold && hasSameColor && allHoldsAreValid&& colorsAreValid && holdRotationBetween0And359;
+ 	
  }
 
 //checks the holdlist
