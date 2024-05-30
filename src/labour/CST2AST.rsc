@@ -26,11 +26,6 @@ ABoulderingRoute cst2ast(start[BoulderingRoute] sr) {
 		return result;
 		//return 0;
     }
-    
-//list[ARoute_property] toList({Route_property "," }+ properties) {
-//	println(properties);
-//    return [grade("1a")];
-//}
 
 //behold, ChatGPT code
 
@@ -54,10 +49,9 @@ ARoute_property toARouteProperty(Route_property prop) {
         {
         	return grade("<s>");
         }
-        case (Route_property)`grid_base_point { x: <Integer i>, y: <Integer j> }`:
+        case (Route_property)`grid_base_point { <{GBPExpr ","}* exprs> }`:
         {
-        	//yes this looks dumb, but that is just how we defined it hehe
-        	return gridBasePoint(gridBasePoint(toInt("<i>"), toInt("<j>")));
+        	return gridBasePoint(gridBasePoint(toList(exprs)));
         }
         case (Route_property)`identifier <Id i>`:
         {
@@ -70,6 +64,31 @@ ARoute_property toARouteProperty(Route_property prop) {
  		default:
  			throw "Unexpected Route_property: <prop>";
     }
+}
+
+list[AHoldExpr] toList({GBPExpr ","}* exprs)
+{
+	list[AHoldExpr] result = [];
+    for (GBPExpr expr <- exprs) {
+        result += toAgbpExpr(expr);
+    }
+    return result;
+}
+
+AHoldExpr toAgbpExpr(GBPExpr expr)
+{
+	switch (expr) {
+        case (GBPExpr)`x: <Integer i>`: 
+        {
+        	return x(toInt("<i>"));
+        }
+        case (GBPExpr)`y: <Integer i>`: 
+        {
+        	return y(toInt("<i>"));
+        }
+        default:
+ 			throw "Unexpected GBPExpr: <hold>";
+ 	}
 }
 
 //this is the LIST of holds

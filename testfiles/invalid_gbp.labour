@@ -24,8 +24,7 @@ bouldering_route {
 	},
 	grade: "A2",
 	grid_base_point {
-		x: 37,
-		y: 57
+		x: 37
 	},
 	identifier "000"
 }

@@ -14,7 +14,7 @@ data ARoute_property = grade(str s)
   | identifier(AId id)
   | holdlist(list[AHold] holds);
 
-data AGridBasePoint = gridBasePoint(int x, int y);
+data AGridBasePoint = gridBasePoint(list[AHoldExpr] coords);
 
 data AHold = hold(list[AHoldExpr] expressions);
 
