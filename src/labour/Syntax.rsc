@@ -21,6 +21,7 @@ syntax Route_property = Grade
 
 syntax Grade = "grade:" Str;
 
+//TODO, CHANGE TO ALLOW FOR INVALID ONES
 syntax GridBasePoint = "grid_base_point" "{" "x:" Integer "," "y:" Integer "}";
 
 syntax Identifier = "identifier" Id;

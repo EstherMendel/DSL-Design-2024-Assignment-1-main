@@ -1,0 +1,17 @@
+bouldering_route {
+	grade: "8G",
+	grid_base_point {
+		x: 12,
+		y: 4
+	},
+	identifier "965",
+	hold{
+		x:135,
+		y:345,
+		shape:"9",
+		rotation: 0,
+		color: cyan,
+		starting_labels:1,
+		end_label
+	}
+}

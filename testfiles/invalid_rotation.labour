@@ -1,0 +1,32 @@
+bouldering_route {
+	grid_base_point {
+		x: 256,
+		y: 256
+	},
+	identifier "539",
+	grade: "A94K",
+	hold{
+		x:4,
+		y:63,
+		shape:"59",
+		rotation: 20,
+		color: orange,
+		starting_labels:1
+	}
+	hold{
+		x:80,
+		y:96,
+		shape:"59",
+		rotation: 270,
+		color: orange,
+		starting_labels:1
+	}
+	hold{
+		x:130,
+		y:350,
+		shape:"4",
+		rotation: 100000,
+		color: orange,
+		end_label
+	}
+}

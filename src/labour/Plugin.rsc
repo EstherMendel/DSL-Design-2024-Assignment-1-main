@@ -48,6 +48,21 @@ void main() {
   	println(checkWellformedness(|project://LaBouR//testfiles/no_gbp.labour|));
   	println("Check for no Only a GBP:");
   	println(checkWellformedness(|project://LaBouR//testfiles/only_a_gbp.labour|));
+  	println("Check for Invalid GBP:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/invalid_gbp.labour|));
+  	println("Check for Invalid Holds:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/invalid_holds.labour|));
+  	println("Check for Invalid Colors, this is caught in the AST!:");
+  	try
+  	{
+  		println(checkWellformedness(|project://LaBouR//testfiles/invalid_color.labour|));
+  	}
+  	catch:
+  	{
+  		println("Exception caught!");
+  	}
+  	println("Check for Invalid Rotation:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/invalid_rotation.labour|));
 }
 
 //THIS COMMAND IN THE TERMINAL:
