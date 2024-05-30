@@ -26,14 +26,14 @@ bouldering_route {
 		y:210,
 		shape:"42",
 		rotation: 90,
-		color: pink,
+		color: blue
 	}
 	hold{
 		x:130,
 		y:350,
 		shape:"2",
 		rotation: 135,
-		color: red,
+		color: blue,
 		end_label
 	}
 }

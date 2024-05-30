@@ -45,30 +45,26 @@ list[ARoute_property] toList({Route_property "," }+ properties) {
 
 // Function to transform individual Route_property
 ARoute_property toARouteProperty(Route_property prop) {
-	println("Processing Route_property: <prop>");
-	println("Type of prop: <typeOf(prop)>");
+//	println("Processing Route_property: <prop>");
+//	println("Type of prop: <typeOf(prop)>");
 	//println("Concrete type: <prop.concreteType()>");
     switch (prop) {
         //okay this works, but I am 100% sure I did this before
         case (Route_property)`grade: <Str s>`: 
         {
-        	println("matched with grade!");
         	return grade("<s>");
         }
         case (Route_property)`grid_base_point { x: <Integer i>, y: <Integer j> }`:
         {
-        	println("matched with grid base point!");
         	//yes this looks dumb, but that is just how we defined it hehe
         	return gridBasePoint(gridBasePoint(toInt("<i>"), toInt("<j>")));
         }
         case (Route_property)`identifier <Id i>`:
         {
-        	println("matched with identifier!!");
         	return identifier(id("<i>"));
         }
         case (Route_property)`<Hold* holds>`: 
         {
-        	println("matched with holdlist!");
         	return holdlist(toList(holds));
         }
  		default:
@@ -79,7 +75,6 @@ ARoute_property toARouteProperty(Route_property prop) {
 //this is the LIST of holds
 list[AHold] toList(Hold* holds) {
 	list[AHold] result = [];
-	println("Holdlist unfolding");
     for (Hold hold <- holds) {
         result += toList(hold.holdexpressions);
     }
@@ -90,7 +85,6 @@ list[AHold] toList(Hold* holds) {
 //this is ONE hold
 AHold toList({HoldExpr "," }+ holdexprs) {
 	list[AHoldExpr] result = [];
-	println("Holdexpr unfolding");
     for (HoldExpr holdexpr <- holdexprs) {
         result += toAHoldExpr(holdexpr);
     }
@@ -101,45 +95,38 @@ AHold toList({HoldExpr "," }+ holdexprs) {
 
 // Function to transform individual Route_property
 AHoldExpr toAHoldExpr(HoldExpr hold) {
-	println("Processing HoldExpr: <hold>");
-	println("Type of Expr: <typeOf(hold)>");
+//	println("Processing HoldExpr: <hold>");
+//	println("Type of Expr: <typeOf(hold)>");
 	//println("Concrete type: <prop.concreteType()>");
     switch (hold) {
         //okay this works, but I am 100% sure I did this before
         case (HoldExpr)`x: <Integer i>`: 
         {
-        	println("matched an x!");
         	return x(toInt("<i>"));
         }
         case (HoldExpr)`y: <Integer i>`: 
         {
-        	println("matched an y!");
         	return y(toInt("<i>"));
         }
         case (HoldExpr)`shape: <Id s>`:
         {
-        	println("matched with shape!!");
         	return shape(id("<s>"));
         }
         case (HoldExpr)`rotation: <Integer r>`:
         {
-        	println("matched with rotation!");
         	return rotation(toInt("<r>"));
         }
         case (HoldExpr)`color: <Color c>`:
         {
-        	println("matched with color!");
         	str col = "<c>";
         	return color(strToColor(col));
         }
         case (HoldExpr)`starting_labels: <Integer sl>`:
         {
-        	println("matched with startingLabel!");
         	return startingLabels(toInt("<sl>"));
         }
         case (HoldExpr)`end_label`:
         {
-        	println("matched with endLabel!");
         	return endLabel();
         }
  		default:
@@ -150,7 +137,6 @@ AHoldExpr toAHoldExpr(HoldExpr hold) {
 //yes, this is just a big switch statement with string matching
 AColor strToColor(str c)
 {
-	println("Processing Color: <c>");
 	switch(c)
 	{
 		case "white": return white();

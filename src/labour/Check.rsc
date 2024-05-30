@@ -29,23 +29,25 @@ void hello()
  int startLabelCounter = 0;
  
  //beware of a massive block of booleans
- bool atLeastTwoHolds = false;
  bool betweenZeroAndTwoStartHolds = true;
- bool hasGrade = false;
- //we do not check wether there is only 1 gbp
- bool hasGridBasePoint = false;
- bool hasIdentifier = false;
- //combined one for x and y
- bool gridBasePointIsValid = false;
- bool noMoreThanTwoStartLabelStripsPerHold = true;
- bool maxTwoStartLabelStrips = true;
- bool hasEndHold = false;
  bool hasSameColor = true;
- //combined one for x,y, etc.
  bool allHoldsAreValid = true;
- //this one CAN'T be false as it is enforced in the CST2AST
  bool colorsAreValid = true;
  bool holdRotationBetween0And359 = true;
+ bool noMoreThanTwoStartLabelStripsPerHold = true;
+ 
+ bool atLeastTwoHolds = false;
+ bool hasGrade = false;
+ bool hasGridBasePoint = false;
+ bool hasIdentifier = false;
+ //bool gridBasePointIsValid = false;
+ bool hasEndHold = false;
+ 
+ bool hasX = false;
+ bool hasY = false;
+ bool hasShape = false;
+ bool hasRotation = false;
+ bool hasColor = false;
  
  list[AColor] colors = [];
  
@@ -54,16 +56,14 @@ void hello()
  	//if any of the bools that are true become false, you can instantly return false and print out why
  	//at the end we check the conjunction of the remaining ones 
  	atLeastTwoHolds = false;
- 	betweenZeroAndTwoStartHolds = true;
- 	hasGrade = false;
- 	hasGridBasePoint = false;
- 	hasIdentifier = false;
- 	gridBasePointIsValid = false;
+ 	betweenZeroAndTwoStartHolds = true;//
+ 	hasGrade = false;//
+ 	hasGridBasePoint = false;//
+ 	hasIdentifier = false;//
+ 	//gridBasePointIsValid = false;
  	noMoreThanTwoStartLabelStripsPerHold = true;
- 	maxTwoStartLabelStrips = true;
- 	hasEndHold = false;
+ 	hasEndHold = false;//
  	hasSameColor = true;
- 	allHoldsAreValid = true;
  	colorsAreValid = true;
  	holdRotationBetween0And359 = true;
  	
@@ -72,17 +72,14 @@ void hello()
  		switch(prop) {
  		case grade(str s):
         {
-        	println(s);
         	hasGrade = true;
         }
         case gridBasePoint(AGridBasePoint point):
         {
-        	println(point.x);
         	hasGridBasePoint = true;
         }
         case identifier(AId id):
         {
-        	println(id);
         	hasIdentifier = true;
         }
         case holdlist(list[AHold] holds):
@@ -94,20 +91,82 @@ void hello()
  			throw "Unexpected Route_property: <prop>";
  		}
  	}
+    
+    //conclusions on the booleans
+ 	if(holdCounter >= 2)
+ 	{
+ 		atLeastTwoHolds = true;
+ 	}
+ 	else
+ 	{
+		atLeastTwoHolds = false;
+		print("Your route");
+		print(thing);
+ 		println("has \<2 holds");
+ 	}
  	
  	if (!isEmpty(colors)) {
 	 	AColor firstColor = colors[0];
 	    for (AColor color <- colors) {
 	        if (color != firstColor) {
 	            hasSameColor=false;
+		 		print("Your route");
+				print(thing);
+		 		println("does not have all same colors:");            
 	            break;
 	        }
 	    }
     }
+    
+ 	if (!(0<= startHoldCounter && startHoldCounter <= 2))
+ 	{
+ 		betweenZeroAndTwoStartHolds = false;
+ 		print("Your route");
+		print(thing);
+ 		println("has \<0 or \>2 start holds");
+ 	}
+ 	
+ 	if(startLabelCounter > 2)
+ 	{
+ 		print("Your route");
+		print(thing);
+ 		println("has \>2 start labels");
+ 		noMoreThanTwoStartLabelStripsPerHold = false;
+ 	}
+ 	
+ 	if(!hasEndHold) {
+ 		print("Your route");
+		print(thing);
+ 		println("has no end hold");
+ 	}
+ 	
+ 	if(!hasIdentifier) {
+ 		print("Your route");
+		print(thing);
+ 		println("has no identifier");
+ 	}
+ 	
+ 	if(!hasGridBasePoint) {
+ 		print("Your route");
+		print(thing);
+ 		println("has no grid base point");
+ 	}
+ 	
+ 	if(!hasGrade) {
+ 		print("Your route");
+		print(thing);
+ 		println("has no grade");
+ 	}
+    
  	//a lot of the bools are missing because as said earlier the function exits early if these become false
- 	return atLeastTwoHolds && betweenZeroAndTwoStartHolds && hasGrade && hasGridBasePoint && hasGrade && hasGridBasePoint && hasIdentifier && gridBasePointIsValid && noMoreThanTwoStartLabelStripsPerHold && maxTwoStartLabelStrips && hasEndHold && hasSameColor && allHoldsAreValid&& colorsAreValid && holdRotationBetween0And359;
+ 	return atLeastTwoHolds && betweenZeroAndTwoStartHolds 
+ 	&& hasGrade && hasGridBasePoint && hasIdentifier 
+ 	&& noMoreThanTwoStartLabelStripsPerHold 
+ 	&& hasEndHold && hasSameColor && allHoldsAreValid
+ 	&& colorsAreValid && holdRotationBetween0And359;
  	
  }
+
 
 //checks the holdlist
 bool checkHoldPropertiesConfiguration(list[AHold] holds)
@@ -116,31 +175,42 @@ bool checkHoldPropertiesConfiguration(list[AHold] holds)
  	startHoldCounter = 0;
  	startLabelCounter = 0;
  	for (hold <- holds) {
+ 		hasX = false;
+		hasY = false;
+		hasShape = false;
+		hasRotation = false;
+		hasColor = false;
+		
  		holdCounter = holdCounter + 1;
  		checkHoldPropertyConfiguration(hold);
+ 		
+ 		if (!hasX) {
+ 			print("Your hold");
+ 			print(hold);
+ 			println("does not have an x");
+		}
+		if (!hasY) {
+ 			print("Your hold");
+ 			print(hold);
+ 			println("does not have a y");
+		}
+		if (!hasShape) {
+ 			print("Your hold");
+ 			print(hold);
+ 			println("does not have a shape");
+		}
+		if (!hasRotation) {
+ 			print("Your hold");
+ 			print(hold);
+ 			println("does not have a rotation");
+		}
+		if (!hasColor) {
+ 			print("Your hold");
+ 			print(hold);
+ 			println("does not have a color");
+		}
  	}
  	
- 	//conclusions on the booleans
- 	if(holdCounter >= 2)
- 	{
- 		atLeastTwoHolds = true;
- 	}
- 	else
- 	{
- 		println("<2 holds in route");
- 	}
- 	if(!(0<= startHoldCounter && startHoldCounter <= 2))
- 	{
- 		betweenZeroAndTwoStartHolds = false;
- 		println("<0 or >2 start holds in route");
- 	}
- 	if(startLabelCounter > 2)
- 	{
- 		println("more than 2 start labels in route!");
- 		noMoreThanTwoStartLabelStripsPerHold = false;
- 	}
- 	println(holdCounter);
- 	println(startHoldCounter);
  	return true;
  }
  
@@ -151,30 +221,30 @@ bool checkHoldPropertyConfiguration(AHold thing)
  		switch(expr) {
  		case x(int i):
         {
-        	println(i);
+        	hasX = true;
         }
         case y(int i):
         {
-        	println(i);
+        	hasY = true;
         }
         case shape(AId s):
         {
-        	println(s);
+        	hasShape = true;
         }
         case rotation(int r):
         {
-        	println(r>0);
+        	hasRotation = true;
         	if (r < 0 || r > 359) {
             	hasValidRotation = false;
         	};
         }
         case color(AColor c):
         {
+        	hasColor= true;
         	colors += [c];
         }
         case startingLabels(int i):
         {
-        	println(i);
         	startHoldCounter = startHoldCounter + 1;
         	startLabelCounter = startLabelCounter + i;
         }

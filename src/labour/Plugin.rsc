@@ -21,7 +21,7 @@ bool checkWellformedness(loc fil) {
 	// Transform the parse tree into an abstract syntax tree
 	println("now transforming to AST");
 	&T ast = cst2ast(resource);
-	println(ast);
+	//println(ast);
 	// Check the well-formedness of the program
 	return checkBoulderRouteConfiguration(ast);
 }
@@ -35,7 +35,10 @@ void main() {
 	registerLanguage("LaBouR - DSLD", "labour", Tree(str _, loc path) {
 		return parserLaBouR(path);
   	});
-  	println(checkWellformedness(|project://LaBouR/example.labour|));
+  	println("Check for correct route");
+  	println(checkWellformedness(|project://LaBouR//testfiles/example.labour|));
+  	println("Check for non-uniform colors:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/nonuniform_colors.labour|));
 }
 
 //THIS COMMAND IN THE TERMINAL:
