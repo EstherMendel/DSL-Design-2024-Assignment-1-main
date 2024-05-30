@@ -6,8 +6,8 @@ module labour::Syntax
  
 lexical Id = "\"" ![\r\n]* "\"";
 lexical Integer = [0-9]+;
-//we hard code the colors, so inputting a wrong color will lead to a parse error
-lexical Color = "white" | "yellow" | "green" | "blue" | "red" | "purple" | "pink" | "black" | "orange";
+//colors are a string without the brackets
+lexical Color = [a-zA-Z][a-zA-Z0-9]*;
 lexical Str = "\"" ![\"]*  "\"";
 
  
