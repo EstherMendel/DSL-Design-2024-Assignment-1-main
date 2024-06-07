@@ -1,0 +1,40 @@
+bouldering_route {
+	grid_base_point {
+		x: 37,
+		y: 13
+	},
+	grade: "5A",
+	hold{
+		x:100,
+		y:50,
+		shape:"8492",
+		rotation: 4,
+		color: blue,
+		starting_labels:1
+	}
+	hold{
+		x:120,
+		y:60,
+		shape:"19",
+		rotation: 190,
+		color: blue,
+		starting_labels:1
+	}
+	hold{
+		x:140,
+		y:210,
+		shape:"42",
+		rotation: 35,
+		color: blue,
+		starting_labels:3
+	}
+	hold{
+		x:130,
+		y:350,
+		shape:"2",
+		rotation: 135,
+		color: blue,
+		end_label
+	},
+	identifier "23"
+}

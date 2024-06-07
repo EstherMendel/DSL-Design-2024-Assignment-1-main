@@ -1,0 +1,20 @@
+bouldering_route {
+	grade: "17CE",
+	identifier "02",
+	hold{
+		x:0,
+		y:32,
+		shape:"0",
+		rotation: 240,
+		color: red,
+		starting_labels:2
+	}
+	hold{
+		x:10,
+		y:150,
+		shape:"2",
+		rotation: 270,
+		color: red,
+		end_label
+	}
+}

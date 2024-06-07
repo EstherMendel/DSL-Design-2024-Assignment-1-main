@@ -5,6 +5,7 @@ import util::IDE;
 import labour::Check;
 import labour::Parser;
 import labour::CST2AST;
+import IO;
 
 /*
 * This function is defined to test the functionality of the whole assignment. It receives a file path as a parameter and returns true if the program satisfies the specification or false otherwise.
@@ -13,9 +14,15 @@ import labour::CST2AST;
 */
 bool checkWellformedness(loc fil) {
 	// Parsing
+	println("processing file: <fil>");
+	//println("now parsing to CST");
 	&T resource = parserLaBouR(fil);
+	//print out the result
+	//println(resource);
 	// Transform the parse tree into an abstract syntax tree
+	//println("now transforming to AST");
 	&T ast = cst2ast(resource);
+	//println(ast);
 	// Check the well-formedness of the program
 	return checkBoulderRouteConfiguration(ast);
 }
@@ -29,4 +36,41 @@ void main() {
 	registerLanguage("LaBouR - DSLD", "labour", Tree(str _, loc path) {
 		return parserLaBouR(path);
   	});
+  	println("Check for correct route");
+  	println(checkWellformedness(|project://LaBouR//testfiles/example.labour|));
+  	println("Check for non-uniform colors:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/nonuniform_colors.labour|));
+  	println("Check for only 1 hold:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/only_one_hold.labour|));
+  	println("Check for more than 2 start holds:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/more_than_two_start_holds.labour|));
+  	println("Check for no Grid Base Point:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/no_gbp.labour|));
+  	println("Check for no Only a GBP:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/only_a_gbp.labour|));
+  	println("Check for Invalid GBP:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/invalid_gbp.labour|));
+  	println("Check for Invalid Holds:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/invalid_holds.labour|));
+  	println("Check for Invalid Colors, this is caught in the AST!:");
+  	try
+  	{
+  		println(checkWellformedness(|project://LaBouR//testfiles/invalid_color.labour|));
+  	}
+  	//I couldn't manage to specify the correct exception, if you remove this statement you will see
+  	//that the exception is the one specified in 'Check.rsc'
+  	catch:
+  	{
+  		println("Exception caught!");
+  	}
+  	println("Check for Invalid Rotation:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/invalid_rotation.labour|));
+  	println("Checking a valid long route:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/epic_long_route.labour|));
+  	println("Checking for duplicate route properties:");
+  	println(checkWellformedness(|project://LaBouR//testfiles/duplicate_route_properties.labour|));
 }
+
+
+//THIS COMMAND IN THE TERMINAL:
+//checkWellformedness(|project://LaBouR/example.labour|);

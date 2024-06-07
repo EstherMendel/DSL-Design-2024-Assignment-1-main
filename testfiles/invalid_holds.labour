@@ -1,0 +1,34 @@
+bouldering_route {
+	grade: "95G",
+	hold{
+		y:2,
+		shape:"9",
+		rotation: 224,
+		color: green,
+		starting_labels:1
+	}
+	hold{
+		x:120,
+		y:60,
+		color: green,
+		starting_labels:1
+	}
+	hold{
+		x:140,
+		y:210,
+		shape:"42",
+		rotation: 45,
+		color: green
+	}
+	hold{
+		x:5720,
+		shape:"57",
+		rotation: 0,
+		end_label
+	},
+	grid_base_point {
+		x: 535,
+		y: 24
+	},
+	identifier "23"
+}

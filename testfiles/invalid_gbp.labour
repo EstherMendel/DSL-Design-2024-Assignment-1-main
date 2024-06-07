@@ -1,0 +1,30 @@
+bouldering_route {
+	hold{
+		x:0,
+		y:0,
+		shape:"5",
+		rotation: 2,
+		color: black,
+		starting_labels:2
+	}
+	hold{
+		x:120,
+		y:302,
+		shape:"19",
+		rotation: 270,
+		color: black
+	}
+	hold{
+		x:135,
+		y:539,
+		shape:"179",
+		rotation: 69,
+		color: black,
+		end_label
+	},
+	grade: "A2",
+	grid_base_point {
+		x: 37
+	},
+	identifier "000"
+}
