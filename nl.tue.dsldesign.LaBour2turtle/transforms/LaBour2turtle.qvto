@@ -1,10 +1,10 @@
-modeltype LaBour uses '';
-modeltype turtle uses '';
+modeltype LaBour uses 'http://www.example.org/LaBour';
+modeltype turtle uses 'http://www.example.org/turtle';
 
-transformation LaBour2turtle(in labour, out turtle);
+transformation LaBour2turtle(in LaBour, out turtle);
 
 main() {
-	labour.rootObjects()[LaBour::BoulderingRoute]->map route2turtle();
+	LaBour.rootObjects()[LaBour::BoulderingRoute]->map route2turtle();
 }
 
 mapping LaBour::BoulderingRoute::route2turtle() : turtle::Program {

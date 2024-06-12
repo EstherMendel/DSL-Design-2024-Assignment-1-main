@@ -25,34 +25,18 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Expr" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="x">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="y">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="x" eSuperTypes="#//integer"/>
   <eClassifiers xsi:type="ecore:EClass" name="y" eSuperTypes="#//integer"/>
-  <eClassifiers xsi:type="ecore:EClass" name="string">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="y">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="grade">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="string" abstract="true" eSuperTypes="#//Expr">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="grade" eSuperTypes="#//string.1"/>
-  <eClassifiers xsi:type="ecore:EClass" name="identifier" eSuperTypes="#//string.1"/>
-  <eClassifiers xsi:type="ecore:EClass" name="shape" eSuperTypes="#//string.1"/>
-  <eClassifiers xsi:type="ecore:EClass" name="rotation" instanceClassName=""/>
+  <eClassifiers xsi:type="ecore:EClass" name="RouteGrade" eSuperTypes="#//string"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RouteID" eSuperTypes="#//string"/>
+  <eClassifiers xsi:type="ecore:EClass" name="shape" eSuperTypes="#//string"/>
   <eClassifiers xsi:type="ecore:EClass" name="rotation" eSuperTypes="#//Expr">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//Angle"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Colour" eSuperTypes="#//Expr">
+  <eClassifiers xsi:type="ecore:EClass" name="HoldColour" eSuperTypes="#//Expr">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//Colour"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="startinglabels" eSuperTypes="#//integer"/>
@@ -61,5 +45,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="integer" abstract="true" eSuperTypes="#//Expr">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HoldRotation" eSuperTypes="#//Expr">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//Angle"/>
   </eClassifiers>
 </ecore:EPackage>
