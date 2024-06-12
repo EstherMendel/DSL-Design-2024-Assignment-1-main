@@ -1,0 +1,12 @@
+modeltype LaBour uses '';
+modeltype turtle uses '';
+
+transformation LaBour2turtle(in labour, out turtle);
+
+main() {
+	labour.rootObjects()[LaBour::BoulderingRoute]->map route2turtle();
+}
+
+mapping LaBour::BoulderingRoute::route2turtle() : turtle::Program {
+	println("yey");
+}
