@@ -13,23 +13,58 @@
     <genDataTypes ecoreDataType="LaBour.ecore#//Colour"/>
     <genDataTypes ecoreDataType="LaBour.ecore#//Angle"/>
     <genClasses ecoreClass="LaBour.ecore#//BoulderingRoute">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//BoulderingRoute/grade"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//BoulderingRoute/identifier"/>
-      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference LaBour.ecore#//BoulderingRoute/holds"/>
-      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference LaBour.ecore#//BoulderingRoute/gridbasepoint"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference LaBour.ecore#//BoulderingRoute/routestatement"/>
     </genClasses>
     <genClasses ecoreClass="LaBour.ecore#//GridBasePoint">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//GridBasePoint/x"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//GridBasePoint/y"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference LaBour.ecore#//GridBasePoint/expr"/>
     </genClasses>
     <genClasses ecoreClass="LaBour.ecore#//Hold">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//Hold/x"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//Hold/y"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//Hold/shape"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//Hold/rotation"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//Hold/colour"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//Hold/startingLabels"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//Hold/endLabel"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference LaBour.ecore#//Hold/expr"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="LaBour.ecore#//RouteStatement"/>
+    <genClasses ecoreClass="LaBour.ecore#//Grade">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference LaBour.ecore#//Grade/expr"/>
+    </genClasses>
+    <genClasses ecoreClass="LaBour.ecore#//Identifier">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference LaBour.ecore#//Identifier/expr"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="LaBour.ecore#//Expr"/>
+    <genClasses ecoreClass="LaBour.ecore#//x">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//x/value"/>
+    </genClasses>
+    <genClasses ecoreClass="LaBour.ecore#//y">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//y/value"/>
+    </genClasses>
+    <genClasses ecoreClass="LaBour.ecore#//x.1"/>
+    <genClasses ecoreClass="LaBour.ecore#//y.1"/>
+    <genClasses ecoreClass="LaBour.ecore#//string">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//string/value"/>
+    </genClasses>
+    <genClasses ecoreClass="LaBour.ecore#//y.2">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//y.2/value"/>
+    </genClasses>
+    <genClasses ecoreClass="LaBour.ecore#//grade">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//grade/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="LaBour.ecore#//string.1">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//string.1/value"/>
+    </genClasses>
+    <genClasses ecoreClass="LaBour.ecore#//grade.1"/>
+    <genClasses ecoreClass="LaBour.ecore#//identifier"/>
+    <genClasses ecoreClass="LaBour.ecore#//shape"/>
+    <genClasses ecoreClass="LaBour.ecore#//rotation"/>
+    <genClasses ecoreClass="LaBour.ecore#//rotation.1">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//rotation.1/value"/>
+    </genClasses>
+    <genClasses ecoreClass="LaBour.ecore#//Colour.1">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//Colour.1/value"/>
+    </genClasses>
+    <genClasses ecoreClass="LaBour.ecore#//startinglabels"/>
+    <genClasses ecoreClass="LaBour.ecore#//endlabel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//endlabel/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="LaBour.ecore#//integer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LaBour.ecore#//integer/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
