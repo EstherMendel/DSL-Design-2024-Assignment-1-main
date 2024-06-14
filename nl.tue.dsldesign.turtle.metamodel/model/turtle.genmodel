@@ -48,7 +48,7 @@
     <genClasses ecoreClass="turtle.ecore#//Binary">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference turtle.ecore#//Binary/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference turtle.ecore#//Binary/right"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute turtle.ecore#//Binary/operation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute turtle.ecore#//Binary/Operation"/>
     </genClasses>
     <genClasses ecoreClass="turtle.ecore#//Sqr"/>
     <genClasses ecoreClass="turtle.ecore#//Sqrt"/>

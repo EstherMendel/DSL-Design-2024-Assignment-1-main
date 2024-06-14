@@ -42,7 +42,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="right" lowerBound="1" eType="#//Expr"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Operation" eType="#//Operation"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Sqr" eSuperTypes="#//Unary"/>
   <eClassifiers xsi:type="ecore:EClass" name="Sqrt" eSuperTypes="#//Unary"/>
