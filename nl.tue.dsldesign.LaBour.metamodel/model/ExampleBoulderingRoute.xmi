@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LaBour:BoulderingRoute
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:LaBour="http://www.example.org/LaBour"
+    xsi:schemaLocation="http://www.example.org/LaBour LaBour.ecore">
+  <routestatement
+      xsi:type="LaBour:GridBasePoint">
+    <expr xsi:type="LaBour:x"
+        value="17"/>
+    <expr xsi:type="LaBour:y"
+        value="3"/>
+  </routestatement>
+</LaBour:BoulderingRoute>
