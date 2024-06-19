@@ -1,2 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<turtle:Program xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:turtle="http://www.example.org/turtle" xsi:schemaLocation="http://www.example.org/turtle ../model/turtle.ecore"/>
+<turtle:Program xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:turtle="http://www.example.org/turtle" xsi:schemaLocation="http://www.example.org/turtle ../model/turtle.ecore">
+  <statements xsi:type="turtle:Assignment" var="x">
+    <expr xsi:type="turtle:RealConst" value="20.0"/>
+  </statements>
+  <statements xsi:type="turtle:Assignment" var="y">
+    <expr xsi:type="turtle:RealConst" value="23.0"/>
+  </statements>
+  <statements xsi:type="turtle:Assignment" var="x_next">
+    <expr xsi:type="turtle:RealConst" value="4.0"/>
+  </statements>
+  <statements xsi:type="turtle:Assignment" var="y_next">
+    <expr xsi:type="turtle:RealConst" value="30.0"/>
+  </statements>
+  <statements xsi:type="turtle:TurnToZero"/>
+  <statements xsi:type="turtle:Assignment" var="radians_to_turn">
+    <expr xsi:type="turtle:Arctan">
+      <expr xsi:type="turtle:Binary" operation="DIVISION">
+        <left xsi:type="turtle:Binary" operation="SUBTRACT">
+          <left xsi:type="turtle:VarRef" var="y_next"/>
+          <right xsi:type="turtle:VarRef" var="y"/>
+        </left>
+        <right xsi:type="turtle:Binary" operation="SUBTRACT">
+          <left xsi:type="turtle:VarRef" var="x_next"/>
+          <right xsi:type="turtle:VarRef" var="x"/>
+        </right>
+      </expr>
+    </expr>
+  </statements>
+  <statements xsi:type="turtle:If">
+    <cond xsi:type="turtle:Binary">
+      <left xsi:type="turtle:VarRef" var="radians_to_turn"/>
+      <right xsi:type="turtle:RealConst"/>
+    </cond>
+    <then xsi:type="turtle:TurnRight">
+      <expr xsi:type="turtle:VarRef" var="radians_to_turn"/>
+    </then>
+    <else xsi:type="turtle:TurnLeft">
+      <expr xsi:type="turtle:Abs">
+        <expr xsi:type="turtle:VarRef" var="radians_to_turn"/>
+      </expr>
+    </else>
+  </statements>
+  <statements xsi:type="turtle:Assignment" var="x">
+    <expr xsi:type="turtle:RealConst" value="4.0"/>
+  </statements>
+  <statements xsi:type="turtle:Assignment" var="y">
+    <expr xsi:type="turtle:RealConst" value="30.0"/>
+  </statements>
+</turtle:Program>

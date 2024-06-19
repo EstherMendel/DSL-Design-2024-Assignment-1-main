@@ -5,7 +5,7 @@
     <semanticResources>LaBour.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_vxwX0CckEe-IYKXVgtdPyA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_vyohkCckEe-IYKXVgtdPyA" name="LaBour" repPath="#_vyjpECckEe-IYKXVgtdPyA" changeId="1718203607226">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_vyohkCckEe-IYKXVgtdPyA" name="LaBour" repPath="#_vyjpECckEe-IYKXVgtdPyA" changeId="1718821870526">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="LaBour.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -727,7 +727,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_TYGMzCinEe-wBdo4SAieAQ" name="[7..7] expr" sourceNode="_d-hp8CcoEe-WIZs0PeroZw" targetNode="_EHGu8CinEe-wBdo4SAieAQ">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_TYGMzCinEe-wBdo4SAieAQ" name="[5..7] expr" sourceNode="_d-hp8CcoEe-WIZs0PeroZw" targetNode="_EHGu8CinEe-wBdo4SAieAQ">
       <target xmi:type="ecore:EReference" href="LaBour.ecore#//Hold/expr"/>
       <semanticElements xmi:type="ecore:EReference" href="LaBour.ecore#//Hold/expr"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_WFJB0CinEe-wBdo4SAieAQ" description="_KScP1iinEe-wBdo4SAieAQ" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">

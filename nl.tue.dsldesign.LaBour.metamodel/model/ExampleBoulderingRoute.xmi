@@ -12,4 +12,73 @@
     <expr xsi:type="LaBour:y"
         value="3"/>
   </routestatement>
+  <routestatement
+      xsi:type="LaBour:Grade">
+    <expr xsi:type="LaBour:RouteGrade"
+        value="6A"/>
+  </routestatement>
+  <routestatement
+      xsi:type="LaBour:Identifier">
+    <expr xsi:type="LaBour:RouteID"
+        value="cool example route!"/>
+  </routestatement>
+  <routestatement
+      xsi:type="LaBour:Hold">
+    <expr xsi:type="LaBour:x"
+        value="2"/>
+    <expr xsi:type="LaBour:y"
+        value="21"/>
+    <expr xsi:type="LaBour:shape"
+        value="7"/>
+    <expr xsi:type="LaBour:startinglabels"
+        value="2"/>
+    <expr xsi:type="LaBour:HoldRotation"/>
+    <expr xsi:type="LaBour:HoldColour"/>
+  </routestatement>
+  <routestatement
+      xsi:type="LaBour:Hold">
+    <expr xsi:type="LaBour:x"
+        value="13"/>
+    <expr xsi:type="LaBour:y"
+        value="39"/>
+    <expr xsi:type="LaBour:shape"
+        value="15"/>
+    <expr xsi:type="LaBour:HoldRotation"/>
+    <expr xsi:type="LaBour:HoldColour"/>
+  </routestatement>
+  <routestatement
+      xsi:type="LaBour:Hold">
+    <expr xsi:type="LaBour:x"
+        value="15"/>
+    <expr xsi:type="LaBour:y"
+        value="52"/>
+    <expr xsi:type="LaBour:shape"
+        value="1"/>
+    <expr xsi:type="LaBour:HoldRotation"/>
+    <expr xsi:type="LaBour:HoldColour"/>
+  </routestatement>
+  <routestatement
+      xsi:type="LaBour:Hold">
+    <expr xsi:type="LaBour:x"
+        value="32"/>
+    <expr xsi:type="LaBour:y"
+        value="65"/>
+    <expr xsi:type="LaBour:shape"
+        value="8"/>
+    <expr xsi:type="LaBour:HoldRotation"/>
+    <expr xsi:type="LaBour:HoldColour"/>
+  </routestatement>
+  <routestatement
+      xsi:type="LaBour:Hold">
+    <expr xsi:type="LaBour:x"
+        value="41"/>
+    <expr xsi:type="LaBour:y"
+        value="71"/>
+    <expr xsi:type="LaBour:shape"
+        value="19"/>
+    <expr xsi:type="LaBour:HoldRotation"/>
+    <expr xsi:type="LaBour:HoldColour"/>
+    <expr xsi:type="LaBour:endlabel"
+        value="true"/>
+  </routestatement>
 </LaBour:BoulderingRoute>

@@ -11,7 +11,7 @@
         eType="#//Expr" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Hold" eSuperTypes="#//RouteStatement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expr" lowerBound="7" upperBound="7"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expr" lowerBound="5" upperBound="7"
         eType="#//Expr" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Angle" instanceClassName="java.lang.Angle"/>

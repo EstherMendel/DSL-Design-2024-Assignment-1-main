@@ -9,7 +9,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="turtle.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_l5KzMB2OEe-zhvnhcHoGkg" name="expr" repPath="#_l5JlEB2OEe-zhvnhcHoGkg" changeId="1718364470708">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_l5KzMB2OEe-zhvnhcHoGkg" name="expr" repPath="#_l5JlEB2OEe-zhvnhcHoGkg" changeId="1718800143753">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="turtle.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -1001,9 +1001,9 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_uHiGUB2PEe-zhvnhcHoGkg" name="Operation : Operation = LT" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="turtle.ecore#//Binary/Operation"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="turtle.ecore#//Binary/Operation"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_uHiGUB2PEe-zhvnhcHoGkg" name="operation : Operation = LT" tooltipText="">
+        <target xmi:type="ecore:EAttribute" href="turtle.ecore#//Binary/operation"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="turtle.ecore#//Binary/operation"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_IjVkZipBEe-Qtpmme6XOzg" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
